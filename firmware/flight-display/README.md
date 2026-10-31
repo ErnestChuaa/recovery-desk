@@ -57,3 +57,9 @@ Self-contained copy of the ESP32 flight-display node sketch, kept separate from 
 
 * Serial monitor at 115200 baud prints `WiFi Connected! IP: ...`.
 * TFT shows `FLIGHT A ONLINE` with the virtual LED bar; button press latches `EVENT: EMERGENCY` and POSTs to the backend.
+
+## Bench photo
+
+![Flight display prototype on the bench](flight-display-prototype.jpg)
+
+Prototype bench setup: the Flight A board running this sketch (TFT shows `FLIGHT A ONLINE`, `WAITING FOR PLAN`) next to the smaller companion node. This is a prototype photo only - not evidence of verified end-to-end integration with the backend.
