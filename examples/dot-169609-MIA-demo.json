@@ -1,0 +1,517 @@
+{
+  "id": "dot-169609",
+  "version": 1,
+  "horizon": 19860,
+  "separation": 60,
+  "wake_arrival_s": {
+    "SUPER": {
+      "SUPER": 78,
+      "HEAVY": 155,
+      "LARGE": 180,
+      "SMALL": 206
+    },
+    "HEAVY": {
+      "SUPER": 78,
+      "HEAVY": 103,
+      "LARGE": 129,
+      "SMALL": 155
+    },
+    "LARGE": {
+      "SUPER": 78,
+      "HEAVY": 78,
+      "LARGE": 78,
+      "SMALL": 103
+    },
+    "SMALL": {
+      "SUPER": 78,
+      "HEAVY": 78,
+      "LARGE": 78,
+      "SMALL": 78
+    }
+  },
+  "wake_departure_s": {
+    "SUPER": {
+      "SUPER": 60,
+      "HEAVY": 180,
+      "LARGE": 180,
+      "SMALL": 180
+    },
+    "HEAVY": {
+      "SUPER": 60,
+      "HEAVY": 120,
+      "LARGE": 120,
+      "SMALL": 120
+    },
+    "LARGE": {
+      "SUPER": 60,
+      "HEAVY": 60,
+      "LARGE": 60,
+      "SMALL": 60
+    },
+    "SMALL": {
+      "SUPER": 60,
+      "HEAVY": 60,
+      "LARGE": 60,
+      "SMALL": 60
+    }
+  },
+  "active_runways": 3,
+  "max_ops_per_hour": 60,
+  "crew_count": 3,
+  "crew_shift_end": [
+    7200,
+    10800,
+    14400
+  ],
+  "hold_pad_capacity": 2,
+  "max_ground_wait": 2400,
+  "decision_time": 0,
+  "gate_change_notice": 1200,
+  "flights": [
+    {
+      "id": "AA2447",
+      "ready": 600,
+      "latest": 3300,
+      "scheduled_departure": 3600,
+      "turnaround": 2100,
+      "taxi": 420,
+      "taxi_out": 1080,
+      "wake": "LARGE",
+      "contingency": 192,
+      "duty_end": 39360,
+      "enroute_absorb": 30,
+      "gates": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "preferred_gate": "G1",
+      "connections": 8,
+      "connection_deadline": 2400,
+      "emergency": false,
+      "motion_event": false,
+      "note": "Historical trigger row 169609: WEATHER_DELAY=36 min, LATE_AIRCRAFT_DELAY=10 min. These delay causes build the scenario; the recorded outcome is withheld from agents."
+    },
+    {
+      "id": "AA2206",
+      "ready": 1380,
+      "latest": 4080,
+      "scheduled_departure": 2820,
+      "turnaround": 2100,
+      "taxi": 420,
+      "taxi_out": 1080,
+      "wake": "LARGE",
+      "contingency": 450,
+      "duty_end": 20940,
+      "enroute_absorb": 60,
+      "gates": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "preferred_gate": "G2",
+      "connections": 5,
+      "connection_deadline": 1620,
+      "emergency": false,
+      "motion_event": false,
+      "note": ""
+    },
+    {
+      "id": "AA349",
+      "ready": 2280,
+      "latest": 4980,
+      "scheduled_departure": 3960,
+      "turnaround": 2100,
+      "taxi": 420,
+      "taxi_out": 1080,
+      "wake": "LARGE",
+      "contingency": 357,
+      "duty_end": 26760,
+      "enroute_absorb": 90,
+      "gates": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "preferred_gate": "G3",
+      "connections": 7,
+      "connection_deadline": 2760,
+      "emergency": false,
+      "motion_event": false,
+      "note": ""
+    },
+    {
+      "id": "AA1389",
+      "ready": 2280,
+      "latest": 4980,
+      "scheduled_departure": 2880,
+      "turnaround": 2100,
+      "taxi": 420,
+      "taxi_out": 1080,
+      "wake": "LARGE",
+      "contingency": 588,
+      "duty_end": 16920,
+      "enroute_absorb": 90,
+      "gates": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "preferred_gate": "G1",
+      "connections": 16,
+      "connection_deadline": 1680,
+      "emergency": false,
+      "motion_event": false,
+      "note": ""
+    },
+    {
+      "id": "AA1049",
+      "ready": 2460,
+      "latest": 5160,
+      "scheduled_departure": 3600,
+      "turnaround": 2100,
+      "taxi": 420,
+      "taxi_out": 1080,
+      "wake": "LARGE",
+      "contingency": 489,
+      "duty_end": 33420,
+      "enroute_absorb": 120,
+      "gates": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "preferred_gate": "G2",
+      "connections": 30,
+      "connection_deadline": 2400,
+      "emergency": false,
+      "motion_event": false,
+      "note": ""
+    },
+    {
+      "id": "AA1598",
+      "ready": 3240,
+      "latest": 5940,
+      "scheduled_departure": 3180,
+      "turnaround": 2100,
+      "taxi": 420,
+      "taxi_out": 1080,
+      "wake": "LARGE",
+      "contingency": 603,
+      "duty_end": 30720,
+      "enroute_absorb": 150,
+      "gates": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "preferred_gate": "G3",
+      "connections": 1,
+      "connection_deadline": 1980,
+      "emergency": false,
+      "motion_event": false,
+      "note": ""
+    },
+    {
+      "id": "AA931",
+      "ready": 3360,
+      "latest": 6060,
+      "scheduled_departure": 3300,
+      "turnaround": 2100,
+      "taxi": 420,
+      "taxi_out": 1080,
+      "wake": "HEAVY",
+      "contingency": 1029,
+      "duty_end": 11520,
+      "enroute_absorb": 150,
+      "gates": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "preferred_gate": "G1",
+      "connections": 8,
+      "connection_deadline": 2100,
+      "emergency": false,
+      "motion_event": false,
+      "note": ""
+    },
+    {
+      "id": "AA1570",
+      "ready": 6360,
+      "latest": 9060,
+      "scheduled_departure": 3540,
+      "turnaround": 2100,
+      "taxi": 420,
+      "taxi_out": 1080,
+      "wake": "LARGE",
+      "contingency": 486,
+      "duty_end": 20580,
+      "enroute_absorb": 300,
+      "gates": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "preferred_gate": "G2",
+      "connections": 14,
+      "connection_deadline": 2340,
+      "emergency": false,
+      "motion_event": false,
+      "note": ""
+    }
+  ],
+  "gates": {
+    "G1": [],
+    "G2": [],
+    "G3": []
+  },
+  "runway_closed": [
+    {
+      "start": 600,
+      "end": 2760
+    }
+  ],
+  "background": [
+    {
+      "time": 5280,
+      "kind": "A",
+      "wake": "LARGE"
+    },
+    {
+      "time": 7860,
+      "kind": "A",
+      "wake": "LARGE"
+    },
+    {
+      "time": 12120,
+      "kind": "A",
+      "wake": "LARGE"
+    }
+  ],
+  "runway_reserved": [],
+  "taxi_closed": [],
+  "focal_id": "AA2447",
+  "provenance": {
+    "kind": "historical_seed_with_synthetic_operations",
+    "source_file": "flights.csv",
+    "source_rows": [
+      169609,
+      169519,
+      169564,
+      169511,
+      169505,
+      169568,
+      169548,
+      169580
+    ],
+    "focal_row": 169609,
+    "focal_source": {
+      "YEAR": "2015",
+      "MONTH": "6",
+      "DAY": "9",
+      "AIRLINE": "AA",
+      "FLIGHT_NUMBER": "2447",
+      "TAIL_NUMBER": "N5EHAA",
+      "ORIGIN_AIRPORT": "MCO",
+      "DESTINATION_AIRPORT": "MIA",
+      "SCHEDULED_DEPARTURE": "2159",
+      "SCHEDULED_ARRIVAL": "2303",
+      "SCHEDULED_TIME": "64",
+      "DISTANCE": "192",
+      "LATE_AIRCRAFT_DELAY": "10",
+      "WEATHER_DELAY": "36",
+      "CANCELLED": "0",
+      "DIVERTED": "0"
+    },
+    "recorded_outcome_withheld": {
+      "ARRIVAL_DELAY": "46",
+      "AIR_SYSTEM_DELAY": "0",
+      "TAXI_IN": "3",
+      "TAXI_OUT": "24"
+    },
+    "airport": "MIA",
+    "local_date": "2015-06-09",
+    "time_origin_local_minutes": 1383,
+    "time_note": "Seconds from time_origin on the destination-local date. Flights crossing midnight are not modelled.",
+    "disruption": {
+      "type": "runway_closure",
+      "label": "CONSTRUCTED from WEATHER_DELAY (DOT records delay minutes, not closures)",
+      "minutes": 36,
+      "window": {
+        "start": 600,
+        "end": 2760
+      }
+    },
+    "background_traffic": {
+      "movements": 3,
+      "dropped_inside_closure": 1,
+      "excluded_as_negotiated": 8,
+      "note": "All other arrivals/departures at this airport in the file. The challenge file contains only delayed flights, so real traffic is higher."
+    },
+    "flights": {
+      "AA2447": {
+        "source_row": 169609,
+        "eta": "derived: SCHEDULED_ARRIVAL + LATE_AIRCRAFT_DELAY",
+        "rotation": {
+          "kind": "synthetic",
+          "rule": "scheduled arrival + 60 min"
+        },
+        "wake": "proxy: DISTANCE>=2000 mi -> HEAVY else LARGE",
+        "latest": "workbook: ETA + 45 min spare fuel; the 30-min final reserve is never used",
+        "contingency": "workbook: 5% of scheduled block time",
+        "duty_end": "workbook 13 h duty; report time derived (60 min before the tail's first departure in the file)",
+        "enroute_absorb": "synthetic: ~5% speed reduction over remaining flight time",
+        "turnaround": "workbook: 35 min minimum at MIA",
+        "connections": "synthetic: seeded by source row"
+      },
+      "AA2206": {
+        "source_row": 169580,
+        "eta": "derived: SCHEDULED_ARRIVAL + LATE_AIRCRAFT_DELAY",
+        "rotation": {
+          "kind": "synthetic",
+          "rule": "scheduled arrival + 60 min"
+        },
+        "wake": "proxy: DISTANCE>=2000 mi -> HEAVY else LARGE",
+        "latest": "workbook: ETA + 45 min spare fuel; the 30-min final reserve is never used",
+        "contingency": "workbook: 5% of scheduled block time",
+        "duty_end": "workbook 13 h duty; report time derived (60 min before the tail's first departure in the file)",
+        "enroute_absorb": "synthetic: ~5% speed reduction over remaining flight time",
+        "turnaround": "workbook: 35 min minimum at MIA",
+        "connections": "synthetic: seeded by source row"
+      },
+      "AA349": {
+        "source_row": 169505,
+        "eta": "derived: SCHEDULED_ARRIVAL + LATE_AIRCRAFT_DELAY",
+        "rotation": {
+          "kind": "synthetic",
+          "rule": "scheduled arrival + 60 min"
+        },
+        "wake": "proxy: DISTANCE>=2000 mi -> HEAVY else LARGE",
+        "latest": "workbook: ETA + 45 min spare fuel; the 30-min final reserve is never used",
+        "contingency": "workbook: 5% of scheduled block time",
+        "duty_end": "workbook 13 h duty; report time derived (60 min before the tail's first departure in the file)",
+        "enroute_absorb": "synthetic: ~5% speed reduction over remaining flight time",
+        "turnaround": "workbook: 35 min minimum at MIA",
+        "connections": "synthetic: seeded by source row"
+      },
+      "AA1389": {
+        "source_row": 169548,
+        "eta": "derived: SCHEDULED_ARRIVAL + LATE_AIRCRAFT_DELAY",
+        "rotation": {
+          "kind": "synthetic",
+          "rule": "scheduled arrival + 60 min"
+        },
+        "wake": "proxy: DISTANCE>=2000 mi -> HEAVY else LARGE",
+        "latest": "workbook: ETA + 45 min spare fuel; the 30-min final reserve is never used",
+        "contingency": "workbook: 5% of scheduled block time",
+        "duty_end": "workbook 13 h duty; report time derived (60 min before the tail's first departure in the file)",
+        "enroute_absorb": "synthetic: ~5% speed reduction over remaining flight time",
+        "turnaround": "workbook: 35 min minimum at MIA",
+        "connections": "synthetic: seeded by source row"
+      },
+      "AA1049": {
+        "source_row": 169519,
+        "eta": "derived: SCHEDULED_ARRIVAL + LATE_AIRCRAFT_DELAY",
+        "rotation": {
+          "kind": "synthetic",
+          "rule": "scheduled arrival + 60 min"
+        },
+        "wake": "proxy: DISTANCE>=2000 mi -> HEAVY else LARGE",
+        "latest": "workbook: ETA + 45 min spare fuel; the 30-min final reserve is never used",
+        "contingency": "workbook: 5% of scheduled block time",
+        "duty_end": "workbook 13 h duty; report time derived (60 min before the tail's first departure in the file)",
+        "enroute_absorb": "synthetic: ~5% speed reduction over remaining flight time",
+        "turnaround": "workbook: 35 min minimum at MIA",
+        "connections": "synthetic: seeded by source row"
+      },
+      "AA1598": {
+        "source_row": 169568,
+        "eta": "derived: SCHEDULED_ARRIVAL + LATE_AIRCRAFT_DELAY",
+        "rotation": {
+          "kind": "synthetic",
+          "rule": "scheduled arrival + 60 min"
+        },
+        "wake": "proxy: DISTANCE>=2000 mi -> HEAVY else LARGE",
+        "latest": "workbook: ETA + 45 min spare fuel; the 30-min final reserve is never used",
+        "contingency": "workbook: 5% of scheduled block time",
+        "duty_end": "workbook 13 h duty; report time derived (60 min before the tail's first departure in the file)",
+        "enroute_absorb": "synthetic: ~5% speed reduction over remaining flight time",
+        "turnaround": "workbook: 35 min minimum at MIA",
+        "connections": "synthetic: seeded by source row"
+      },
+      "AA931": {
+        "source_row": 169511,
+        "eta": "derived: SCHEDULED_ARRIVAL + LATE_AIRCRAFT_DELAY",
+        "rotation": {
+          "kind": "synthetic",
+          "rule": "scheduled arrival + 60 min"
+        },
+        "wake": "proxy: DISTANCE>=2000 mi -> HEAVY else LARGE",
+        "latest": "workbook: ETA + 45 min spare fuel; the 30-min final reserve is never used",
+        "contingency": "workbook: 5% of scheduled block time",
+        "duty_end": "workbook 13 h duty; report time derived (60 min before the tail's first departure in the file)",
+        "enroute_absorb": "synthetic: ~5% speed reduction over remaining flight time",
+        "turnaround": "workbook: 35 min minimum at MIA",
+        "connections": "synthetic: seeded by source row"
+      },
+      "AA1570": {
+        "source_row": 169564,
+        "eta": "derived: SCHEDULED_ARRIVAL + LATE_AIRCRAFT_DELAY",
+        "rotation": {
+          "kind": "synthetic",
+          "rule": "scheduled arrival + 60 min"
+        },
+        "wake": "proxy: DISTANCE>=2000 mi -> HEAVY else LARGE",
+        "latest": "workbook: ETA + 45 min spare fuel; the 30-min final reserve is never used",
+        "contingency": "workbook: 5% of scheduled block time",
+        "duty_end": "workbook 13 h duty; report time derived (60 min before the tail's first departure in the file)",
+        "enroute_absorb": "synthetic: ~5% speed reduction over remaining flight time",
+        "turnaround": "workbook: 35 min minimum at MIA",
+        "connections": "synthetic: seeded by source row"
+      }
+    },
+    "constraints": {
+      "name": "Miami International Airport",
+      "size_class": "Medium hub",
+      "active_runways": 3,
+      "gates": 70,
+      "max_runway_ops_per_hour": 60,
+      "min_turnaround_min": 35,
+      "spare_gates_at_any_time": 3,
+      "iata": "MIA",
+      "from_workbook_row": true,
+      "source": "challenge2_operational_constraints.xlsx",
+      "loaded_from_workbook": true,
+      "stream_mode": "arrival and departure streams"
+    },
+    "derived_fields": [
+      "ETA (scheduled arrival + late-aircraft delay)",
+      "tail rotation links",
+      "median taxi-in/out at airport",
+      "flight-crew report time"
+    ],
+    "workbook_fields": [
+      "runways and hourly movement cap",
+      "spare gates",
+      "minimum turnaround",
+      "FAA wake separation",
+      "spare fuel and final reserve",
+      "contingency fuel",
+      "holding fuel burn",
+      "flight-crew duty",
+      "ground-crew shift and overtime rate",
+      "gate-change notice"
+    ],
+    "synthetic_fields": [
+      "preferred gates",
+      "crew count and shift start times",
+      "wake category proxy",
+      "en-route absorption",
+      "connections",
+      "hold-pad capacity"
+    ],
+    "not_used": "Realised outcomes (ARRIVAL_DELAY, AIR_SYSTEM_DELAY, actual taxi times) are withheld from agents and the scheduler. WEATHER_DELAY and LATE_AIRCRAFT_DELAY are used, as the brief asks, to construct the disruption.",
+    "scope": "8 arrivals within +/-90 min negotiate (8 from AA; others fill the window when scope=same_first); remaining traffic is fixed background"
+  }
+}

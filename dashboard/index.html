@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recovery Desk</title>
+<style>
+/* Barlow and Barlow Condensed (SIL OFL), bundled so the demo works offline. */
+@font-face{font-family:'Barlow';font-weight:400;font-display:swap;src:url(/ui/fonts/barlow-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow';font-weight:500;font-display:swap;src:url(/ui/fonts/barlow-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow';font-weight:600;font-display:swap;src:url(/ui/fonts/barlow-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-weight:500;font-display:swap;src:url(/ui/fonts/barlow-condensed-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-weight:600;font-display:swap;src:url(/ui/fonts/barlow-condensed-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-weight:700;font-display:swap;src:url(/ui/fonts/barlow-condensed-latin-700-normal.woff2) format('woff2')}
+:root{
+  --board:#EEF1F3; --panel:#FFFFFF; --ink:#1B2430; --ink-2:#4A5563; --ink-3:#7A8594; --rule:#D7DDE3; --rule-2:#E6EAEE;
+  --strip:#E3EDF8; --strip-edge:#B9CDE4;
+  --atc:#2563A8; --pilot:#7E57C2; --ground:#B07C00;
+  --hold:#E07B39; --absorb:#F2B88A; --wait:#8E9AAF; --gate:#5B7FA6; --crew:#7D8CA3;
+  --ok:#1F7A4A; --ok-bg:#E2F2E8; --bad:#C2372C; --bad-bg:#FBE6E3; --warn:#9A6200; --warn-bg:#FDF0D6;
+  --closed:rgba(194,55,44,.10); --closed-edge:rgba(194,55,44,.45); --focus:#2563A8;
+  --display:'Barlow Condensed','Arial Narrow','Roboto Condensed',system-ui,sans-serif;
+  --text:'Barlow',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --board:#151B23; --panel:#1C242E; --ink:#E6EBF1; --ink-2:#B3BDC9; --ink-3:#8793A1; --rule:#2E3946; --rule-2:#26303B;
+  --strip:#1F3247; --strip-edge:#2F4B69; --atc:#6FA3E0; --pilot:#AE8DE6; --ground:#E0B12E;
+  --hold:#F0954F; --absorb:#9C6440; --wait:#6E7B90; --gate:#5D86B3; --crew:#6F7F96;
+  --ok:#5CC48A; --ok-bg:#183326; --bad:#F07067; --bad-bg:#3A1F1D; --warn:#E8B04A; --warn-bg:#3A2E15;
+  --closed:rgba(240,112,103,.12); --closed-edge:rgba(240,112,103,.5); --focus:#6FA3E0;}}
+:root[data-theme="dark"]{
+  --board:#151B23; --panel:#1C242E; --ink:#E6EBF1; --ink-2:#B3BDC9; --ink-3:#8793A1; --rule:#2E3946; --rule-2:#26303B;
+  --strip:#1F3247; --strip-edge:#2F4B69; --atc:#6FA3E0; --pilot:#AE8DE6; --ground:#E0B12E;
+  --hold:#F0954F; --absorb:#9C6440; --wait:#6E7B90; --gate:#5D86B3; --crew:#6F7F96;
+  --ok:#5CC48A; --ok-bg:#183326; --bad:#F07067; --bad-bg:#3A1F1D; --warn:#E8B04A; --warn-bg:#3A2E15;
+  --closed:rgba(240,112,103,.12); --closed-edge:rgba(240,112,103,.5); --focus:#6FA3E0;}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--board);color:var(--ink);font:15px/1.45 var(--text);font-variant-numeric:tabular-nums}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.num{font-variant-numeric:tabular-nums}
+.muted{color:var(--ink-3)} .small{font-size:13px}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;letter-spacing:.01em}
+h1{font-size:24px} h2{font-size:19px} h3{font-size:16px}
+
+/* top bar */
+.top{display:flex;align-items:center;gap:20px;padding:12px 24px;background:var(--panel);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:20;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:10px}
+.brand small{color:var(--ink-3);font-size:13px}
+.controls{display:flex;gap:10px;align-items:center;margin-left:auto;flex-wrap:wrap}
+.field{display:flex;align-items:center;border:1px solid var(--rule);border-radius:8px;background:var(--panel);overflow:hidden}
+.field input{border:0;background:transparent;padding:7px 10px;width:84px}
+.field select{border:0;background:transparent;padding:7px 8px;max-width:190px}
+.field input:focus,.field select:focus{outline:none}
+.field:focus-within{outline:2px solid var(--focus);outline-offset:1px}
+.btn{border:1px solid var(--rule);background:var(--panel);border-radius:8px;padding:7px 14px;cursor:pointer;white-space:nowrap;text-decoration:none;color:inherit}
+.btn:hover{border-color:var(--ink-3)}
+.btn.primary{background:var(--atc);border-color:var(--atc);color:#fff;font-weight:600}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.45;cursor:not-allowed;filter:none}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:7px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--panel)}
+.iconbtn{border:1px solid var(--rule);background:var(--panel);cursor:pointer;width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--ink-2)}
+
+main{padding:20px 24px 110px;display:grid;gap:18px;max-width:1680px;margin:0 auto}
+
+/* disruption line */
+.situation{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:start}
+.situation .where{font-family:var(--display);font-size:30px;font-weight:600;line-height:1.1}
+.situation .what{color:var(--ink-2);margin-top:4px;max-width:78ch}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:12.5px;padding:2px 8px;border-radius:5px;background:var(--rule-2);color:var(--ink-2)}
+.tag.bad{background:var(--bad-bg);color:var(--bad)} .tag.warn{background:var(--warn-bg);color:var(--warn)} .tag.ok{background:var(--ok-bg);color:var(--ok)}
+.boards{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.board{display:flex;align-items:center;gap:8px;padding:5px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--panel);font-size:13.5px}
+.board select{border:1px solid var(--rule);border-radius:6px;background:var(--panel);padding:2px 4px}
+.led{width:11px;height:11px;border-radius:50%;flex:none;box-shadow:0 0 0 2px var(--rule-2)}
+.led.yellow{background:#E0B12E}.led.green{background:#22A35A}.led.red{background:var(--bad)}
+.inject{position:relative}
+.pop{position:absolute;right:0;top:calc(100% + 6px);background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:14px;width:300px;box-shadow:0 8px 24px rgba(15,25,40,.14);z-index:30;display:none}
+.pop.open{display:block}
+.pop label{display:block;font-size:13px;color:var(--ink-2);margin:8px 0 4px}
+.pop select,.pop input{width:100%;padding:7px 8px;border:1px solid var(--rule);border-radius:7px;background:var(--panel)}
+
+/* outcome strip */
+.outcome{display:grid;grid-template-columns:220px repeat(5,minmax(0,1fr));background:var(--panel);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.outcome>div{padding:12px 16px;border-left:1px solid var(--rule-2)}
+.outcome>div:first-child{border-left:0}
+.verdict{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:.02em}
+.verdict.ok{color:var(--ok)} .verdict.warn{color:var(--warn)} .verdict.bad{color:var(--bad)} .verdict.idle{color:var(--ink-3)}
+.metric .label{font-size:13px;color:var(--ink-2)}
+.metric .value{font-family:var(--display);font-size:26px;font-weight:600;line-height:1.15}
+.metric .vs{font-size:12.5px;color:var(--ink-3)}
+.delta.good{color:var(--ok)} .delta.worse{color:var(--bad)}
+
+/* workspace */
+.work{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:10px;min-width:0}
+.panel-head{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--rule-2);flex-wrap:wrap}
+.panel-head .right{margin-left:auto;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);padding:8px 16px 12px}
+.sw{display:inline-block;width:14px;height:9px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.chk{display:flex;gap:6px;align-items:center;font-size:13.5px;color:var(--ink-2);cursor:pointer}
+.gantt-wrap{overflow-x:auto;padding:6px 8px 0}
+svg text{fill:var(--ink-2);font-family:var(--text);font-size:11.5px}
+svg .lane-label{fill:var(--ink);font-size:12.5px}
+svg .lane-label.focal{font-weight:600}
+svg .hit{cursor:pointer}
+.preview-banner{display:none;margin:10px 16px 0;padding:8px 12px;border-radius:8px;background:var(--warn-bg);color:var(--warn);font-size:13.5px}
+.preview-banner.on{display:flex;gap:10px;align-items:center}
+.preview-banner button{margin-left:auto}
+
+/* negotiation as flight strips */
+.work>.panel:last-child{position:sticky;top:calc(var(--hdr,64px) + 12px);max-height:calc(100vh - var(--hdr,64px) - 90px);display:flex;flex-direction:column}
+.neg{padding:12px 14px 14px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;min-height:0}
+.neg>*{flex-shrink:0}
+.round-h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.round-h h3{white-space:nowrap}
+.round-h .muted{font-size:13px}
+.strip{display:grid;grid-template-columns:34px minmax(0,1fr);border:1px solid var(--strip-edge);border-radius:6px;background:var(--strip);overflow:hidden}
+.strip .band{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:15px;color:#fff;writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.06em}
+.strip.ATC .band{background:var(--atc)} .strip.PILOT .band{background:var(--pilot)} .strip.GROUND .band{background:var(--ground)}
+.strip .body{padding:8px 10px;display:grid;gap:5px;min-width:0}
+.strip .row1{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.strip .count{font-family:var(--display);font-size:18px;font-weight:600}
+.strip .why{font-size:13px;color:var(--ink-2);line-height:1.4}
+.strip .src{font-size:11.5px;color:var(--ink-3)}
+.strip.wait{opacity:.55}
+.strip.wait .why::after{content:'Waiting for reply';}
+@media (prefers-reduced-motion:no-preference){.strip.wait{animation:breathe 1.6s ease-in-out infinite}@keyframes breathe{50%{opacity:.3}}
+  .strip.new{animation:slot .35s ease-out}@keyframes slot{from{transform:translateX(12px);opacity:0}to{transform:none;opacity:1}}}
+.chips{display:flex;gap:5px;flex-wrap:wrap}
+.chip{font-size:12px;padding:1px 7px;border-radius:4px;background:var(--panel);border:1px solid var(--rule);color:var(--ink-2)}
+.chip.rej{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 35%,transparent)}
+.chip.con{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent);background:var(--warn-bg)}
+.mediation{font-size:13.5px;color:var(--ink-2);padding:8px 10px;border-left:3px solid var(--rule);background:var(--rule-2);border-radius:0 6px 6px 0}
+.decision{padding:10px 12px;border-radius:8px;background:var(--rule-2)}
+.decision.ok{background:var(--ok-bg)} .decision.warn{background:var(--warn-bg)} .decision.bad{background:var(--bad-bg)}
+.empty{padding:28px 18px;color:var(--ink-2);text-align:left}
+.empty b{display:block;font-family:var(--display);font-size:18px;color:var(--ink);margin-bottom:4px}
+
+/* tabs */
+.tabs{display:flex;gap:2px;padding:0 10px;border-bottom:1px solid var(--rule-2);overflow-x:auto}
+.tab{border:0;background:transparent;padding:11px 12px;cursor:pointer;color:var(--ink-2);border-bottom:2px solid transparent;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--atc);font-weight:600}
+.tabpanel{padding:4px 0 8px}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{font-weight:600;color:var(--ink-2);text-align:right;padding:9px 12px;border-bottom:1px solid var(--rule);white-space:nowrap;cursor:default}
+th.sortable{cursor:pointer} th.sortable:hover{color:var(--ink)}
+td{padding:8px 12px;border-bottom:1px solid var(--rule-2);text-align:right;white-space:nowrap}
+th:first-child,td:first-child,.l{text-align:left}
+tbody tr.clickable{cursor:pointer} tbody tr.clickable:hover{background:var(--rule-2)}
+tbody tr.sel{background:var(--strip)}
+.callsign{font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:.02em}
+.cs-cell{border-left:4px solid var(--strip-edge)}
+.cs-cell.focal{border-left-color:var(--atc)}
+.cellnote{font-size:12px;color:var(--ink-3)}
+
+/* checks and sources */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;padding:14px 16px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:13.5px}
+.kv dt{color:var(--ink-2)} .kv dd{margin:0}
+.src-list{display:grid;gap:8px;padding:14px 16px}
+.src-item{display:grid;grid-template-columns:110px 1fr;gap:12px;font-size:13.5px;align-items:baseline}
+
+/* evaluation */
+.eval{padding:14px 16px;display:grid;gap:18px}.eval>.seg{justify-self:start}
+.eval .note{color:var(--ink-2);max-width:90ch;font-size:13.5px}
+.bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px 28px}
+.bar-group h3{margin-bottom:8px}
+.bar-row{display:grid;grid-template-columns:128px minmax(0,1fr) 78px;gap:10px;align-items:center;font-size:13px;margin:4px 0}
+.bar-track{height:12px;background:var(--rule-2);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;background:var(--crew);border-radius:3px}
+.bar-row.ours .bar-fill{background:var(--atc)} .bar-row.ours{font-weight:600}
+
+/* review bar */
+.review{position:fixed;left:0;right:0;bottom:0;background:var(--panel);border-top:1px solid var(--rule);z-index:25;padding:10px 24px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.review .summary{display:flex;gap:16px;align-items:center;flex-wrap:wrap;font-size:13.5px;color:var(--ink-2);min-width:0}
+.review .summary b{color:var(--ink)}
+.review .actions{margin-left:auto;display:flex;gap:10px;align-items:center}
+.status{font-size:13px;padding:2px 8px;border-radius:5px;background:var(--rule-2);color:var(--ink-2)}
+.status.ok{background:var(--ok-bg);color:var(--ok)} .status.bad{background:var(--bad-bg);color:var(--bad)} .status.warn{background:var(--warn-bg);color:var(--warn)}
+
+.tooltip{position:fixed;pointer-events:none;background:var(--ink);color:var(--panel);font-size:12.5px;padding:7px 9px;border-radius:6px;max-width:300px;z-index:50;display:none;line-height:1.4}
+.toast{position:fixed;left:50%;top:70px;transform:translateX(-50%);background:var(--ink);color:var(--panel);padding:9px 14px;border-radius:8px;font-size:14px;z-index:60;display:none}
+
+@media (max-width:1100px){.work{grid-template-columns:1fr}.work>.panel:last-child{position:static;max-height:none}.outcome{grid-template-columns:repeat(3,minmax(0,1fr))}.outcome>div{border-top:1px solid var(--rule-2)}}
+@media (max-width:640px){
+  .top{padding:10px 16px;position:static} main{padding:16px 16px 150px}
+  .outcome{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .situation{grid-template-columns:1fr} .situation .where{font-size:24px}
+  .controls{margin-left:0} .review{padding:10px 16px}
+  .bar-row{grid-template-columns:110px minmax(0,1fr) 60px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><h1>Recovery Desk</h1><small id="ver">no scenario</small></div>
+  <div class="controls">
+    <div class="field" title="Load a historical DOT row">
+      <input id="row" type="number" inputmode="numeric" placeholder="DOT row" aria-label="DOT row number">
+      <select id="suggest" aria-label="Suggested rows"><option value="">Suggested rows</option></select>
+    </div>
+    <button class="btn" id="loadRow">Load row</button>
+    <button class="btn" id="loadDemo" title="Synthetic six-flight fixture">Synthetic demo</button>
+    <div class="seg" role="group" aria-label="Agent type">
+      <button id="modeFixed" aria-pressed="true" title="Rule-based agents, under 2 s">Rule agents</button>
+      <button id="modeClaude" aria-pressed="false" title="Claude agents, about 12 s">Claude agents</button>
+    </div>
+    <button class="btn primary" id="run">Run negotiation</button>
+    <button class="iconbtn" id="theme" aria-label="Switch colour theme" title="Switch colour theme"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 2.5a7.5 7.5 0 0 1 0 15z" fill="currentColor"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="situation" aria-live="polite">
+    <div>
+      <div class="where" id="where">Load a scenario to begin</div>
+      <div class="what" id="what">Pick a historical DOT row with a weather or late-aircraft delay, or the synthetic demo.</div>
+      <div class="tags" id="tags"></div>
+      <div class="boards" id="boards" aria-live="polite"></div>
+    </div>
+    <div class="inject">
+      <button class="btn" id="injectBtn" aria-expanded="false" aria-controls="injectPop">Add disruption</button>
+      <div class="pop" id="injectPop" role="dialog" aria-label="Add disruption">
+        <h3>Add disruption</h3>
+        <label for="dKind">Type</label>
+        <select id="dKind">
+          <option value="runway_closure">Runway closure</option>
+          <option value="delay">Flight delayed en route</option>
+          <option value="emergency">Emergency</option>
+          <option value="turbulence">Turbulence reported</option>
+          <option value="gate_closure">Gate out of service</option>
+        </select>
+        <div id="dFlightWrap"><label for="dFlight">Flight</label><select id="dFlight"></select></div>
+        <div id="dGateWrap"><label for="dGate">Gate</label><select id="dGate"></select></div>
+        <div id="dMinWrap"><label for="dMin">Minutes</label><input id="dMin" type="number" min="1" max="240" value="20"></div>
+        <div style="display:flex;gap:8px;margin-top:12px"><button class="btn primary" id="dApply">Apply</button><button class="btn" id="dCancel">Cancel</button></div>
+        <p class="small muted" style="margin:10px 0 0">Changing the scenario makes any earlier plan stale. Run the negotiation again afterwards.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="outcome" id="outcome" aria-label="Outcome compared with first-come-first-served"></section>
+
+  <section class="work">
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Timeline</h2>
+        <span class="small muted" id="planLabel"></span>
+        <div class="right">
+          <label class="chk"><input type="checkbox" id="showFcfs"> Show FCFS landings</label>
+          <label class="chk"><input type="checkbox" id="showBg" checked> Background traffic</label>
+        </div>
+      </div>
+      <div class="preview-banner" id="preview"><span id="previewText"></span><button class="btn" id="previewBack">Back to chosen plan</button></div>
+      <div class="gantt-wrap"><svg id="gantt" role="img" aria-label="Runway, flight, gate and crew timeline" width="100%" height="40"></svg></div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--absorb)"></i>Delay absorbed by slowing down</span>
+        <span><i class="sw" style="background:var(--hold)"></i>Airborne holding</span>
+        <span><i class="sw" style="background:var(--wait)"></i>Waiting on ground for a gate</span>
+        <span><i class="sw" style="background:var(--strip-edge)"></i>At gate</span>
+        <span><i class="sw" style="background:var(--closed);outline:1px solid var(--closed-edge)"></i>Runway closed</span>
+        <span><i class="sw" style="background:none;border-left:2px dashed var(--bad);width:2px"></i>Fuel limit</span>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h2>Negotiation</h2><span class="small muted" id="negMeta"></span></div>
+      <div class="neg" id="neg"><div class="empty"><b>No negotiation yet</b>Run the negotiation to watch ATC, Pilot and Ground make offers, reject plans and agree.</div></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-tab="flights">Flights</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="plans">Plan options</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="checks">Checks</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="limits">Limits</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="sources">Data sources</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="eval">Evaluation</button>
+    </div>
+    <div class="tabpanel" id="tabpanel"></div>
+  </section>
+</main>
+
+<footer class="review" aria-label="Operator review">
+  <div class="summary" id="reviewSummary"><span>Simulation only. The coordinator approves every plan.</span></div>
+  <div class="actions"><a class="btn" id="logLink" href="#" download hidden>Consensus log</a><span id="reviewStatus" class="status">No plan</span><button class="btn primary" id="approve" disabled>Approve plan</button></div>
+</footer>
+<div class="tooltip" id="tip" role="tooltip"></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const S = {state:null, baseline:null, run:null, runId:null, mode:'fixed', preview:null, selFlight:null, tab:'flights',
+           live:[], es:null, evalData:null, sort:{key:'rank', dir:1}};
+async function api(path, method='GET', body){
+  const r = await fetch(path, {method, headers:{'Content-Type':'application/json'}, body: body===undefined?undefined:JSON.stringify(body)});
+  if(!r.ok){ let t = await r.text(); try{ t = JSON.parse(t).detail || t }catch(e){} throw new Error(typeof t==='string'?t:JSON.stringify(t)); }
+  return r.json();
+}
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.style.display='block'; clearTimeout(toast.h); toast.h=setTimeout(()=>t.style.display='none',3200); }
+
+/* ---------- formatting ---------- */
+const origin = () => S.state?.provenance?.time_origin_local_minutes;
+function clock(t){ const o=origin(); if(o==null){ const m=Math.floor(t/60); return `T+${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`; }
+  const m=Math.floor(o+t/60); return `${String(Math.floor(m/60)%24).padStart(2,'0')}:${String(((m%60)+60)%60).padStart(2,'0')}`; }
+const mins = s => Math.round((s||0)/60);
+const fmtMin = s => `${mins(s)} min`;
+const TIME_METRICS = new Set(['makespan','holding','max_flight_holding','min_fuel_margin','emergency_holding','turbulence_holding','crew_overtime','departure_delay','ground_wait']);
+const fv = (m,v) => TIME_METRICS.has(m) ? (m==='makespan'?clock(v):fmtMin(v)) : v;
+const CODE_TEXT = {HOLDING_STACK:'too many aircraft holding', THROUGHPUT_LOSS:'throughput loss', TOTAL_AIRBORNE_HOLD:'total holding',
+  CONTINGENCY_FUEL_USED:'contingency fuel used', AIRBORNE_HOLD_TOO_LONG:'one flight holds too long', EMERGENCY_HELD:'emergency held',
+  TURBULENCE_HOLD:'holding in turbulence', FLIGHT_CREW_DUTY:'crew past 13 h duty', CONNECTIONS_MISSED:'missed connections', CREW_OVERTIME:'crew overtime',
+  GATE_CHANGES:'gate changes', TURNAROUND_DELAY:'turnaround delay', NOT_ACCEPTABLE_TO_ALL_ROLES:'not acceptable to all',
+  NOT_SELECTED_BY_AGENT:'not preferred', HARD_CONSTRAINT:'breaks a hard rule'};
+const human = c => CODE_TEXT[c] || c.toLowerCase().replaceAll('_',' ');
+const ROLE_NAME = {ATC:'ATC', PILOT:'Pilot', GROUND:'Ground'};
+
+/* ---------- data loading ---------- */
+async function refresh(){
+  S.limits = null;
+  S.state = await api('/state'); S.baseline = (await api('/baseline')).plan;
+  try{ const lr=await api('/runs/latest');      // adopt a run started elsewhere (a board, another browser)
+    if(lr && lr.id && lr.id!==S.runId){ S.runId=lr.id; S.run=lr; S.preview=null; if(lr.status==='RUNNING'){ busy(true); poll(); } } }catch(e){}
+  if(S.runId && S.run && S.run.status!=='RUNNING'){ try{ S.run = await api('/runs/'+S.runId); }catch(e){} }
+  if(S.run && S.run.state_version!==S.state.version && S.run.status!=='RUNNING') S.run.status='STALE';
+  renderAll();
+}
+async function loadSuggestions(){
+  try{ const rows = await api('/scenario/suggest?n=12');
+    const fixed={169609:'MIA weather demo',3125:'MSP failure case',280983:'ORD, no conflict'};
+    $('#suggest').innerHTML = '<option value="">Suggested rows</option>' + Object.entries(fixed).map(([r,l])=>`<option value="${r}">${r} (${l})</option>`).join('') +
+      rows.filter(r=>!(r.row in fixed)).map(r=>`<option value="${r.row}">${r.row} ${esc(r.AIRLINE)}${esc(r.FLIGHT_NUMBER)} to ${esc(r.DESTINATION_AIRPORT)}, ${+r.WEATHER_DELAY>15?'weather '+r.WEATHER_DELAY+' min':'late aircraft '+r.LATE_AIRCRAFT_DELAY+' min'}</option>`).join('');
+  }catch(e){ $('#suggest').innerHTML = '<option value="">Set FLIGHTS_CSV to list rows</option>'; }
+}
+function currentPlan(){ if(S.preview) return planById(S.preview) || S.run?.plan; return (S.run && S.run.plan) ? S.run.plan : S.baseline; }
+function planById(id){ if(!S.run?.candidates) return null; const c=S.run.candidates.find(c=>c.plan.id===id); return c?c.plan:null; }
+
+/* ---------- situation ---------- */
+function renderSituation(){
+  const s=S.state; if(!s) return; const p=s.provenance||{}; const d=p.disruption||{};
+  $('#ver').textContent = `${s.id}, version ${s.version}`;
+  const focal = s.flights.find(f=>f.id===s.focal_id);
+  if(p.airport){
+    $('#where').textContent = `${p.airport}, ${new Date(p.local_date+'T00:00:00').toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'})}`;
+    const w = s.runway_closed[0];
+    $('#what').innerHTML = `${esc(s.flights.length)} arrivals around flight <b>${esc(s.focal_id)}</b>. ` +
+      (d.type==='runway_closure' ? `Runway closed ${clock(w.start)} to ${clock(w.end)}, built from a recorded ${d.minutes}-minute weather delay.` : 'Late inbound aircraft push arrival times back.') +
+      ` ${esc(p.background_traffic?.movements ?? 0)} other movements share the runway.`;
+  } else {
+    $('#where').textContent = 'Synthetic demo';
+    $('#what').textContent = `${s.flights.length} arrivals, ${Object.keys(s.gates).length} gates, ${s.crew_count} ground crews. All values are synthetic.`;
+  }
+  const t=[];
+  t.push(`<span class="tag">${p.kind==='synthetic'?'Synthetic scenario':'Historical row, synthetic operations'}</span>`);
+  s.runway_closed.forEach(w=>t.push(`<span class="tag bad">Runway closed ${clock(w.start)}–${clock(w.end)}</span>`));
+  s.taxi_closed.forEach(w=>t.push(`<span class="tag warn">Taxiway closed ${clock(w.start)}–${clock(w.end)}</span>`));
+  Object.entries(s.gates).forEach(([g,ws])=>ws.forEach(w=>t.push(`<span class="tag warn">Gate ${esc(g)} out ${clock(w.start)}–${clock(w.end)}</span>`)));
+  s.flights.filter(f=>f.emergency).forEach(f=>t.push(`<span class="tag bad">Emergency ${esc(f.id)}</span>`));
+  s.flights.filter(f=>f.motion_event).forEach(f=>t.push(`<span class="tag warn">Turbulence ${esc(f.id)}</span>`));
+  if(focal?.note && p.focal_row) t.push(`<span class="tag" title="${esc(focal.note)}">Trigger row ${esc(p.focal_row)}</span>`);
+  $('#tags').innerHTML = t.join('');
+  $('#dFlight').innerHTML = s.flights.map(f=>`<option ${f.id===s.focal_id?'selected':''}>${esc(f.id)}</option>`).join('');
+  $('#dGate').innerHTML = Object.keys(s.gates).map(g=>`<option>${esc(g)}</option>`).join('');
+}
+
+/* ---------- outcome strip ---------- */
+function renderOutcome(){
+  const el=$('#outcome'); const b=S.baseline; if(!b){ el.innerHTML=''; return; }
+  const r=S.run; const done=r && r.status!=='RUNNING' && r.plan; const p = done ? r.plan : null;
+  let verdict='<div><div class="small muted">Outcome</div><div class="verdict idle">Not run</div><div class="small muted">FCFS baseline shown</div></div>';
+  if(r && r.status==='RUNNING') verdict='<div><div class="small muted">Outcome</div><div class="verdict idle">Negotiating</div><div class="small muted">Two rounds</div></div>';
+  if(done){ const cls = r.outcome==='CONSENSUS'?'ok':r.outcome==='FALLBACK_PLAN'?'warn':'bad';
+    const label = {CONSENSUS:'Agreed',FALLBACK_PLAN:'Fallback plan',PROVEN_INFEASIBLE:'Not all flights fit',NO_PLAN_FOUND:'No complete plan'}[r.outcome]||r.outcome;
+    const sub = r.outcome==='PROVEN_INFEASIBLE' ? `Proved: max ${r.proof.max_resolved} of ${r.proof.n}` : r.decision==='CONSENSUS' ? 'All three agents accepted' : `Agents did not agree`;
+    verdict=`<div><div class="small muted">Outcome${r.status==='STALE'?' (stale)':''}</div><div class="verdict ${cls}">${label}</div><div class="small muted">${sub}</div></div>`; }
+  const n=S.state.flights.length;
+  const items=[
+    ['Flights placed', m=>`${m.resolved}/${n}`, 'resolved', true],
+    ['Airborne holding', m=>`${fmtMin(m.holding)}`, 'holding', false],
+    ['Holding fuel', m=>`${Math.round(m.holding_fuel_kg).toLocaleString()} kg`, 'holding_fuel_kg', false],
+    ['Crew overtime', m=>fmtMin(m.crew_overtime), 'crew_overtime', false],
+    ['Departure delay', m=>fmtMin(m.departure_delay), 'departure_delay', false],
+];
+  el.innerHTML = verdict + items.map(([label,f,k,higher])=>{
+    const bm=b.metrics; const m=p?p.metrics:bm;
+    let vs='First-come-first-served';
+    if(p){ const d=m[k]-bm[k]; const good = higher? d>0 : d<0; const same = d===0;
+      const dTxt = TIME_METRICS.has(k)? `${d>0?'+':''}${mins(d)} min` : k==='holding_fuel_kg' ? `${d>0?'+':''}${Math.round(d).toLocaleString()} kg` : `${d>0?'+':''}${d}`;
+      vs = same ? `Same as FCFS (${f(bm)})` : `<span class="delta ${good?'good':'worse'}">${dTxt}</span> vs FCFS ${f(bm)}`; }
+    return `<div class="metric"><div class="label">${label}</div><div class="value num">${f(m)}</div><div class="vs">${vs}</div></div>`; }).join('');
+}
+
+/* ---------- gantt ---------- */
+function renderGantt(){
+  const svg=$('#gantt'); const s=S.state; const plan=currentPlan(); if(!s||!plan){ svg.innerHTML=''; return; }
+  $('#planLabel').textContent = S.preview ? `Previewing ${S.preview}` : (S.run?.plan ? `Chosen plan ${S.run.plan.id}` : 'FCFS baseline (no negotiation yet)');
+  const fs=Object.fromEntries(s.flights.map(f=>[f.id,f])); const A=Object.fromEntries(plan.assignments.map(a=>[a.flight_id,a]));
+  const det=Object.fromEntries((plan.details||[]).map(d=>[d.flight_id,d]));
+  const fcfsA=Object.fromEntries((S.baseline?.assignments||[]).map(a=>[a.flight_id,a]));
+  const t0=Math.min(...s.flights.map(f=>f.ready), ...s.runway_closed.map(w=>w.start))-600;
+  const t1=Math.max(...plan.assignments.map(a=>a.departure), ...s.flights.map(f=>f.latest), ...(s.crew_shift_end||[]).filter(x=>x<s.horizon))+600;
+  const flights=[...s.flights].sort((a,b)=>(A[a.id]?.landing??a.ready)-(A[b.id]?.landing??b.ready));
+  const lanes=[{k:'rw',label:'Runway'}, ...flights.map(f=>({k:'f',id:f.id,label:f.id})),
+    {k:'sep'}, ...Object.keys(s.gates).map(g=>({k:'g',id:g,label:`Gate ${g}`})), ...[...Array(s.crew_count).keys()].map(c=>({k:'c',id:c,label:`Crew ${c+1}`}))];
+  const W=Math.max(760, svg.parentElement.clientWidth-16), L=96, R=12, top=26, H=26;
+  const x=t=>L+(t-t0)/(t1-t0)*(W-L-R); let y=0; const ys=[];
+  lanes.forEach(l=>{ ys.push(top+y); y+= l.k==='sep'?12:H; }); const bottom=top+y;
+  let o=`<rect x="0" y="0" width="${W}" height="${bottom+8}" fill="transparent"/>`;
+  const step = (t1-t0)>4*3600?3600:(t1-t0)>2*3600?1800:900;
+  for(let m=Math.ceil(t0/step)*step;m<=t1;m+=step){ o+=`<line x1="${x(m)}" x2="${x(m)}" y1="${top-4}" y2="${bottom}" stroke="var(--rule-2)"/><text x="${x(m)}" y="${top-10}" text-anchor="middle">${clock(m)}</text>`; }
+  s.runway_closed.forEach(w=>{ o+=`<rect x="${x(Math.max(w.start,t0))}" y="${top}" width="${Math.max(2,x(Math.min(w.end,t1))-x(Math.max(w.start,t0)))}" height="${bottom-top}" fill="var(--closed)"/><line x1="${x(w.start)}" x2="${x(w.start)}" y1="${top}" y2="${bottom}" stroke="var(--closed-edge)"/><line x1="${x(w.end)}" x2="${x(w.end)}" y1="${top}" y2="${bottom}" stroke="var(--closed-edge)"/>`; });
+  lanes.forEach((l,i)=>{ if(l.k==='sep') return; const yy=ys[i];
+    const focal = l.k==='f' && l.id===s.focal_id; const sel = l.k==='f' && l.id===S.selFlight;
+    if(sel) o+=`<rect x="0" y="${yy}" width="${W}" height="${H}" fill="var(--strip)"/>`;
+    o+=`<text class="lane-label ${focal?'focal':''}" x="8" y="${yy+17}">${esc(l.label)}</text><line x1="${L}" x2="${W-R}" y1="${yy+H}" y2="${yy+H}" stroke="var(--rule-2)"/>`;
+    if(l.k==='f') o+=`<rect class="hit" data-flight="${esc(l.id)}" x="0" y="${yy}" width="${L}" height="${H}" fill="transparent"/>`; });
+  if($('#showBg').checked) (s.runway_reserved||[]).filter(t=>t>=t0&&t<=t1).forEach(t=>{ o+=`<line x1="${x(t)}" x2="${x(t)}" y1="${ys[0]+8}" y2="${ys[0]+18}" stroke="var(--ink-3)" opacity=".55"/>`; });
+  const tipAttr = txt => `data-tip="${esc(txt)}"`;
+  flights.forEach(f=>{ const i=lanes.findIndex(l=>l.k==='f'&&l.id===f.id); const yy=ys[i]; const a=A[f.id]; const d=det[f.id]||{};
+    o+=`<line x1="${x(f.latest)}" x2="${x(f.latest)}" y1="${yy+4}" y2="${yy+H-4}" stroke="var(--bad)" stroke-dasharray="3 2" ${tipAttr(`${f.id} fuel/holding limit ${clock(f.latest)}`)}/>`;
+    if(!a){ o+=`<rect x="${x(f.ready)}" y="${yy+8}" width="${Math.max(4,x(f.latest)-x(f.ready))}" height="10" fill="none" stroke="var(--bad)" stroke-dasharray="4 3" rx="2"/><text x="${x(f.latest)+6}" y="${yy+17}" style="fill:var(--bad)">Unresolved, operator decides</text>`; return; }
+    const absorbEnd=f.ready+(d.speed_absorb||0);
+    if(d.speed_absorb>0) o+=`<rect x="${x(f.ready)}" y="${yy+8}" width="${x(absorbEnd)-x(f.ready)}" height="10" fill="var(--absorb)" rx="2" ${tipAttr(`${f.id}: slows down en route, absorbs ${fmtMin(d.speed_absorb)}`)}/>`;
+    if(a.landing>absorbEnd) o+=`<rect x="${x(absorbEnd)}" y="${yy+8}" width="${x(a.landing)-x(absorbEnd)}" height="10" fill="var(--hold)" rx="2" ${tipAttr(`${f.id}: airborne holding ${fmtMin(a.landing-absorbEnd)}, fuel margin ${fmtMin(f.latest-a.landing)}`)}/>`;
+    const gmin=a.landing+f.taxi;
+    if(a.gate_in>gmin) o+=`<rect x="${x(gmin)}" y="${yy+8}" width="${x(a.gate_in)-x(gmin)}" height="10" fill="var(--wait)" rx="2" ${tipAttr(`${f.id}: waits ${fmtMin(a.gate_in-gmin)} on the ground for gate ${a.gate}`)}/>`;
+    o+=`<rect x="${x(a.gate_in)}" y="${yy+6}" width="${Math.max(2,x(a.gate_out)-x(a.gate_in))}" height="14" fill="var(--strip)" stroke="var(--strip-edge)" rx="3" ${tipAttr(`${f.id} at gate ${a.gate}${d.gate_changed?' (changed)':''} ${clock(a.gate_in)}–${clock(a.gate_out)}, crew ${a.crew+1}`)}/>`;
+    if(x(a.gate_out)-x(a.gate_in)>26) o+=`<text x="${x(a.gate_in)+5}" y="${yy+17}" style="fill:var(--ink-2)">${esc(a.gate)}</text>`;
+    o+=`<path d="M${x(a.landing)-5},${yy+5} h10 l-5,8 z" fill="var(--atc)" ${tipAttr(`${f.id} lands ${clock(a.landing)} (ETA was ${clock(f.ready)})`)}/>`;
+    o+=`<path d="M${x(a.departure)-5},${yy+21} h10 l-5,-8 z" fill="var(--ink-2)" ${tipAttr(`${f.id} departs ${clock(a.departure)}, ${fmtMin(d.departure_delay)} late vs schedule`)}/>`;
+    o+=`<path d="M${x(a.landing)-4},${ys[0]+6} h8 l-4,7 z" fill="var(--atc)" ${tipAttr(`${f.id} landing ${clock(a.landing)}`)}/><path d="M${x(a.departure)-4},${ys[0]+20} h8 l-4,-7 z" fill="var(--ink-2)" ${tipAttr(`${f.id} departure ${clock(a.departure)}`)}/>`;
+    if($('#showFcfs').checked && fcfsA[f.id] && fcfsA[f.id].landing!==a.landing){ const fl=fcfsA[f.id].landing;
+      o+=`<circle cx="${x(fl)}" cy="${yy+13}" r="4.5" fill="none" stroke="var(--ink)" stroke-width="1.5" ${tipAttr(`FCFS would land ${f.id} at ${clock(fl)}`)}/>`; }
+    const gi=lanes.findIndex(l=>l.k==='g'&&l.id===a.gate), ci=lanes.findIndex(l=>l.k==='c'&&l.id===a.crew);
+    const hl = S.selFlight===f.id; const fill = hl ? 'var(--atc)' : 'var(--gate)';
+    o+=`<rect class="hit" data-flight="${esc(f.id)}" x="${x(a.gate_in)}" y="${ys[gi]+5}" width="${Math.max(2,x(a.gate_out)-x(a.gate_in))}" height="16" fill="${fill}" rx="3" ${tipAttr(`${f.id} at gate ${a.gate} ${clock(a.gate_in)}–${clock(a.gate_out)}`)}/>`;
+    if(x(a.gate_out)-x(a.gate_in)>48) o+=`<text x="${x(a.gate_in)+5}" y="${ys[gi]+17}" style="fill:#fff;pointer-events:none">${esc(f.id)}</text>`;
+    const ce=a.gate_in+f.turnaround;
+    o+=`<rect class="hit" data-flight="${esc(f.id)}" x="${x(a.gate_in)}" y="${ys[ci]+5}" width="${Math.max(2,x(ce)-x(a.gate_in))}" height="16" fill="${hl?'var(--atc)':'var(--crew)'}" rx="3" ${tipAttr(`Crew ${a.crew+1} turns ${f.id} ${clock(a.gate_in)}–${clock(ce)}${d.crew_overtime?`, ${fmtMin(d.crew_overtime)} overtime`:''}`)}/>`;
+    if(x(ce)-x(a.gate_in)>48) o+=`<text x="${x(a.gate_in)+5}" y="${ys[ci]+17}" style="fill:#fff;pointer-events:none">${esc(f.id)}</text>`;
+  });
+  Object.entries(s.gates).forEach(([g,ws])=>{ const gi=lanes.findIndex(l=>l.k==='g'&&l.id===g); ws.forEach(w=>{ o+=`<rect x="${x(Math.max(w.start,t0))}" y="${ys[gi]+5}" width="${Math.max(2,x(Math.min(w.end,t1))-x(Math.max(w.start,t0)))}" height="16" fill="none" stroke="var(--bad)" stroke-dasharray="4 3" rx="3" ${tipAttr(`Gate ${g} out of service ${clock(w.start)}–${clock(w.end)}`)}/>`; }); });
+  (s.crew_shift_end||[]).forEach((t,c)=>{ if(t>t1) return; const ci=lanes.findIndex(l=>l.k==='c'&&l.id===c);
+    o+=`<line x1="${x(t)}" x2="${x(t)}" y1="${ys[ci]+2}" y2="${ys[ci]+H-2}" stroke="var(--bad)" stroke-width="2" ${tipAttr(`Crew ${c+1} shift ends ${clock(t)}; work after this is overtime`)}/>`; });
+  svg.setAttribute('viewBox',`0 0 ${W} ${bottom+8}`); svg.setAttribute('height',bottom+8); svg.style.minWidth=W+'px'; svg.innerHTML=o;
+}
+
+/* ---------- negotiation ---------- */
+function stripHTML(e, isNew){
+  const top = {}; (e.rejections||[]).filter(x=>e.round===1 ? (x.tier==='relaxed'||x.tier==='hard') : x.tier==='hard').forEach(x=>top[x.reason_code]=(top[x.reason_code]||0)+1);
+  const rej = Object.entries(top).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([k,v])=>`<span class="chip rej">Rejects ${v} for ${esc(human(k))}</span>`).join('');
+  const chosen = S.run?.plan?.id;
+  const con = [...new Map((e.concessions||[]).filter(c=>!chosen||c.plan_id===chosen).map(c=>[c.reason_code,c])).values()]
+    .map(c=>`<span class="chip con">Concedes ${esc(human(c.reason_code))}: ${fv(c.metric,c.value)}, limit ${fv(c.metric,c.limit)}</span>`).join('');
+  const n=e.accepted_plan_ids.length, pref=(e.preferred_plan_ids||[]).length;
+  const verb = e.message_type==='OFFER' ? `Offers ${n} plan${n===1?'':'s'}` : n ? `Accepts ${n} plan${n===1?'':'s'}` : 'Accepts none';
+  return `<div class="strip ${e.sender} ${isNew?'new':''}"><div class="band">${ROLE_NAME[e.sender]}</div><div class="body">
+    <div class="row1"><span class="count">${verb}</span>${e.message_type==='OFFER'?`<span class="small muted">${pref} within preferred limits</span>`:''}</div>
+    ${rej||con?`<div class="chips">${rej}${con}</div>`:''}
+    <div class="why">${esc(e.summary)}</div><div class="src">${e.summary_source==='model'?'Written by Claude; checks are by code':'Rule-based agent'}</div></div></div>`;
+}
+function waitingStrip(role){ return `<div class="strip ${role} wait"><div class="band">${ROLE_NAME[role]}</div><div class="body"><div class="why"></div></div></div>`; }
+function renderNeg(){
+  const el=$('#neg'); const r=S.run;
+  if(!r){ el.innerHTML=`<div class="empty"><b>No negotiation yet</b>Run the negotiation to watch ATC, Pilot and Ground make offers, reject plans and agree.</div>`; $('#negMeta').textContent=''; return; }
+  const trace = r.status==='RUNNING' ? S.liveFor(r.id||S.runId) : (r.trace||[]);
+  const msgs = n => trace.filter(e=>e.type==='agent_message'&&e.round===n);
+  const menu = trace.find(e=>e.type==='menu'); const c1 = trace.find(e=>e.type==='coordinator'&&!e.action);
+  const med = trace.filter(e=>e.action==='MEDIATION'); const err = trace.find(e=>e.type==='agent_error');
+  const roles=['ATC','PILOT','GROUND'];
+  const round = (n,title,sub) => { const m=msgs(n); if(!m.length && r.status!=='RUNNING') return '';
+    if(!m.length && n===2 && !msgs(1).length) return '';
+    return `<div class="round-h"><h3>${title}</h3><span class="muted">${sub}</span></div>` + roles.map(role=>{ const e=m.find(x=>x.sender===role); return e?stripHTML(e,r.status==='RUNNING'):(r.status==='RUNNING'?waitingStrip(role):''); }).join(''); };
+  let h='';
+  if(menu) h+=`<div class="small muted">${menu.candidate_ids.length} checked plans on the menu. Solver ${menu.proof?.proven?'proved':'found'} at most ${menu.proof?.max_resolved ?? '?'} of ${menu.flights} flights can be placed.</div>`;
+  else if(r.status==='RUNNING') h+=`<div class="small muted">Building and checking the plan menu…</div>`;
+  h+=round(1,'Round 1','Each agent offers what it can accept');
+  if(c1){ const pa=c1.preferred_by_all.length, oa=c1.offered_by_all.length;
+    let mtxt = pa ? `${pa} plan${pa>1?'s':''} suit every agent's preferred limits.` : `No plan suits every agent's preferred limits${oa?`; ${oa} are acceptable to all`:''}.`;
+    const ok = med.find(m=>m.plan_id); if(med.length) mtxt += ok ? ` The coordinator's solver built plan ${ok.plan_id} inside everyone's ${ok.tier==='strict'?'preferred':'concession'} limits.` : ' The solver found no plan inside everyone\'s limits.';
+    h+=`<div class="mediation">${mtxt}</div>`; }
+  if(msgs(1).length===3 || msgs(2).length) h+=round(2,'Round 2','Accept or concede');
+  if(err) h+=`<div class="mediation" style="border-color:var(--bad)">An agent reply failed (${esc(err.error_type)}). The rule-based fallback decides; nothing unchecked is used.</div>`;
+  if(r.status!=='RUNNING' && r.plan){ const cls=r.decision==='CONSENSUS'?'ok':r.outcome==='PROVEN_INFEASIBLE'?'bad':'warn';
+    const conc = Object.entries(r.concessions||{}).map(([k,v])=>`${ROLE_NAME[k]} relaxes ${[...new Set(v.map(x=>human(x.reason_code)))].join(' and ')}`).join('; ');
+    const br = Object.entries(r.fallback_soft_limit_breaches||{}).map(([k,v])=>`${ROLE_NAME[k]}: ${[...new Set(v.map(x=>human(x.reason_code)))].join(', ')}`).join('; ');
+    h+=`<div class="decision ${cls}"><h3>${r.decision==='CONSENSUS'?`All three accept plan ${r.plan.id}`:`No agreement: fallback plan ${r.plan.id}`}</h3>
+      <div class="small" style="margin-top:4px">${r.decision==='CONSENSUS'?(conc?`Concessions: ${esc(conc)}.`:'No concessions needed.'):`${esc(r.fallback_explanation||'Chosen by a fixed rule (most flights, fewest objections).')}${br?` It breaks: ${esc(br)}.`:''}`}
+      ${r.plan.unresolved.length?` ${r.plan.unresolved.length} flight${r.plan.unresolved.length>1?'s':''} cannot be placed and need an operator decision.`:''}</div></div>`; }
+  el.innerHTML=h;
+  $('#negMeta').textContent = r.status==='RUNNING' ? (S.mode==='claude'?'Claude agents, live':'Rule agents') : `${r.mode==='claude'?'Claude agents':'Rule agents'}, ${r.rounds} of ${r.turn_limit||3} turns, ${r.model_calls} model calls, ${r.runtime_seconds.toFixed(1)} s`;
+}
+
+/* ---------- tabs ---------- */
+function renderTab(){
+  document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected', String(t.dataset.tab===S.tab)));
+  const el=$('#tabpanel');
+  if(S.tab==='flights') el.innerHTML=flightsTab(); else if(S.tab==='plans') el.innerHTML=plansTab();
+  else if(S.tab==='checks') el.innerHTML=checksTab(); else if(S.tab==='sources') el.innerHTML=sourcesTab();
+  else if(S.tab==='limits'){ el.innerHTML=limitsTab(); if(!S.limits) loadLimits(); } else { el.innerHTML=evalTab(); if(!S.evalData) loadEval(); }
+  el.querySelectorAll('tr[data-flight]').forEach(tr=>tr.onclick=()=>{ S.selFlight = S.selFlight===tr.dataset.flight?null:tr.dataset.flight; renderGantt(); renderTab(); });
+  el.querySelectorAll('tr[data-plan]').forEach(tr=>tr.onclick=()=>previewPlan(tr.dataset.plan));
+  el.querySelectorAll('th[data-sort]').forEach(th=>th.onclick=()=>{ const k=th.dataset.sort; S.sort = {key:k, dir: S.sort.key===k? -S.sort.dir : 1}; renderTab(); });
+  el.querySelectorAll('[data-evalset]').forEach(b=>b.onclick=()=>{ S.evalSet=b.dataset.evalset; S.evalData=null; renderTab(); });
+}
+function flightsTab(){
+  const plan=currentPlan(); const s=S.state; if(!plan||!s) return '<div class="empty">Load a scenario.</div>';
+  const fs=Object.fromEntries(s.flights.map(f=>[f.id,f]));
+  const rows=(plan.details||[]).map(d=>`<tr class="clickable ${S.selFlight===d.flight_id?'sel':''}" data-flight="${esc(d.flight_id)}">
+    <td class="cs-cell ${d.flight_id===s.focal_id?'focal':''}"><span class="callsign">${esc(d.flight_id)}</span> ${d.emergency?'<span class="tag bad">Emergency</span>':''}${d.turbulence?'<span class="tag warn">Turbulence</span>':''}<div class="cellnote">${d.wake.charAt(0)+d.wake.slice(1).toLowerCase()} wake${d.flight_id===s.focal_id?', trigger flight':''}</div></td>
+    <td>${clock(fs[d.flight_id].ready)}</td><td><b>${clock(d.revised_eta)}</b></td>
+    <td class="l">${d.speed_absorb?`Slow down, absorb ${fmtMin(d.speed_absorb)}`:'<span class="muted">None</span>'}</td>
+    <td>${d.airborne_hold?fmtMin(d.airborne_hold):'<span class="muted">0</span>'}</td><td>${d.ground_wait?fmtMin(d.ground_wait):'<span class="muted">0</span>'}</td>
+    <td>${esc(d.gate)}${d.gate_changed?' <span class="cellnote">changed</span>':''}</td><td>${d.crew+1}${d.crew_overtime?` <span class="cellnote">+${mins(d.crew_overtime)} min OT</span>`:''}</td>
+    <td>${d.holding_fuel_kg?d.holding_fuel_kg.toLocaleString()+' kg':'<span class="muted">0</span>'}</td>
+    <td style="${d.contingency_used>0?'color:var(--warn);font-weight:600':''}" title="${d.contingency_used>0?'Uses '+fmtMin(d.contingency_used)+' of contingency fuel; final reserve untouched':''}">${fmtMin(d.fuel_margin)}${d.contingency_used>0?' <span class="cellnote">uses contingency</span>':''}</td><td>${fmtMin(d.departure_delay)}</td><td>${d.missed_connection_pax}</td></tr>`).join('');
+  const un=plan.unresolved.map(id=>{ const dg=(S.run?.diagnostics||[]).find(x=>x.flight_id===id);
+    return `<tr><td class="cs-cell"><span class="callsign">${esc(id)}</span></td><td>${clock(fs[id].ready)}</td><td colspan="10" class="l" style="color:var(--bad)">Not placed. ${esc(dg?.explanation||'Operator decision required.')}</td></tr>`; }).join('');
+  return `<div class="tablewrap"><table><thead><tr><th>Flight</th><th>Original ETA</th><th>Revised ETA</th><th class="l">Flight-plan change</th><th>Airborne hold</th><th>Ground wait</th><th>Gate</th><th>Crew</th><th>Holding fuel</th><th>Fuel above reserve</th><th>Departure delay</th><th>Missed pax</th></tr></thead><tbody>${rows}${un}</tbody></table></div>
+   <p class="small muted" style="padding:0 16px">Click a flight to highlight it on the timeline. Missed-passenger counts are synthetic.</p>`;
+}
+function plansTab(){
+  const r=S.run; if(!r?.candidates) return '<div class="empty"><b>No plan options yet</b>Run the negotiation to see every plan the agents considered and why each was accepted or rejected.</div>';
+  const n=S.state.flights.length;
+  let rows=r.candidates.map((c,i)=>({c,i,m:c.plan.metrics}));
+  const k=S.sort.key, dir=S.sort.dir;
+  rows.sort((a,b)=> k==='rank' ? (a.c.plan.id===r.plan.id?-1:b.c.plan.id===r.plan.id?1:(b.c.accepted_by.length-a.c.accepted_by.length)||a.i-b.i)*dir : ((a.m[k]-b.m[k])*dir || a.i-b.i));
+  const th=(key,label)=>`<th class="sortable" data-sort="${key}" aria-sort="${S.sort.key===key?(S.sort.dir>0?'ascending':'descending'):'none'}">${label}${S.sort.key===key?(S.sort.dir>0?' ▲':' ▼'):''}</th>`;
+  const body=rows.map(({c,m})=>{ const f=c.role_findings||{};
+    const rej=Object.entries(f).filter(([,v])=>v&&v.some(x=>x.tier==='relaxed')).map(([role,v])=>`${ROLE_NAME[role]}: ${[...new Set(v.filter(x=>x.tier==='relaxed').map(x=>human(x.reason_code)))].join(', ')}`).join('; ');
+    const src=c.plan.source.split(',')[0].replace('solver:','Solver, ').replace('greedy:','Heuristic, ').replace('mediated-','mediated ');
+    const isSel=c.plan.id===r.plan.id, isPrev=c.plan.id===S.preview;
+    return `<tr class="clickable ${isPrev?'sel':''}" data-plan="${c.plan.id}"><td><b>${c.plan.id}</b> ${isSel?'<span class="tag ok">Chosen</span>':''}<div class="cellnote">${esc(src)}</div></td>
+      <td>${m.resolved}/${n}</td><td>${fmtMin(m.holding)}</td><td>${Math.round(m.holding_fuel_kg).toLocaleString()} kg</td><td>${fmtMin(m.ground_wait)}</td><td>${fmtMin(m.departure_delay)}</td><td>${fmtMin(m.crew_overtime)}</td><td>${m.gate_changes}</td><td>${m.missed_connections}</td>
+      <td class="l">${c.accepted_by.length?c.accepted_by.map(x=>ROLE_NAME[x]).join(', '):'<span class="muted">None</span>'}</td>
+      <td class="l" style="color:var(--bad);white-space:normal;min-width:220px">${esc(rej)||(c.eligible_for_consensus?'':'Places fewer flights')}</td></tr>`; }).join('');
+  return `<div class="tablewrap"><table><thead><tr>${th('rank','Plan')}${th('resolved','Placed')}${th('holding','Airborne hold')}${th('holding_fuel_kg','Holding fuel')}${th('ground_wait','Ground wait')}${th('departure_delay','Departure delay')}${th('crew_overtime','Crew overtime')}${th('gate_changes','Gate changes')}${th('missed_connections','Missed pax')}<th class="l">Accepted in round 2</th><th class="l">Rejected for</th></tr></thead><tbody>${body}</tbody></table></div>
+    <p class="small muted" style="padding:0 16px">Click a plan to preview it on the timeline. Every plan listed has already passed all code checks.</p>`;
+}
+function checksTab(){
+  const r=S.run; const checks=r?.checks; if(!checks) return '<div class="empty"><b>No checks yet</b>Run the negotiation. Every plan is checked by code against runway, wake, gate, crew, taxi and fuel rules before agents see it.</div>';
+  const g={}; checks.forEach(c=>{ const k=c.rule; g[k]=g[k]||{role:c.role,ok:0,bad:0}; g[k][c.passed?'ok':'bad']++; });
+  const NAMES={ACCOUNTING:'Every flight placed or listed as unresolved',ARRIVAL_WINDOW:'No landing before ETA',FINAL_FUEL_RESERVE:'Final fuel reserve (30 min) never used',FLIGHT_CREW_DUTY:'Flight crew within 13 h duty',GATE_CHANGE_NOTICE:'Gate changes announced 20 min ahead',RUNWAY_HOURLY_CAPACITY:'Runway movements within hourly cap',GRID_ALIGNED:'Times on the 30 s planning grid',GATE_COMPATIBLE:'Gate fits aircraft',TASK_ORDER:'Taxi, turnaround and departure in order',GROUND_WAIT_LIMIT:'Ground wait within limit',CREW_EXISTS:'Crew exists',GATE_RESERVATION:'Gate not out of service',TAXI_OPEN:'Taxiway open',RUNWAY_OPEN:'Runway open',HOLD_PAD_CAPACITY:'Ground holding positions available',GATE_NO_OVERLAP:'No two aircraft at one gate',CREW_NO_OVERLAP:'No crew on two aircraft',RUNWAY_WAKE_SEPARATION:'Wake separation between movements'};
+  const failed=checks.filter(c=>!c.passed);
+  return `<div class="cols">${['ATC','PILOT','GROUND'].map(role=>`<div><h3 style="color:var(--${role.toLowerCase()})">${ROLE_NAME[role]} rules</h3><dl class="kv" style="margin-top:8px">${Object.entries(g).filter(([,v])=>v.role===role).map(([k,v])=>`<dt>${NAMES[k]||k}</dt><dd>${v.bad?`<span style="color:var(--bad)">${v.bad} failed</span>, `:''}${v.ok} passed</dd>`).join('')}</dl></div>`).join('')}</div>
+    <p class="small" style="padding:0 16px">${failed.length?`<span style="color:var(--bad)">${failed.length} checks failed.</span>`:`All ${checks.length} checks passed for the chosen plan.`} These are model checks on synthetic rules, not an operational safety certification.</p>`;
+}
+function sourcesTab(){
+  const s=S.state; if(!s) return ''; const p=s.provenance||{};
+  if(p.kind==='synthetic') return `<div class="src-list"><div class="src-item"><span class="tag">Synthetic</span><span>Every value in this scenario is a fixture. ${esc(p.rules||'')}</span></div></div>`;
+  const items=[
+    ['Historical',`Row ${p.focal_row} of ${esc(p.source_file)}: ${esc(p.focal_source?.AIRLINE)}${esc(p.focal_source?.FLIGHT_NUMBER)} ${esc(p.focal_source?.ORIGIN_AIRPORT)} to ${esc(p.focal_source?.DESTINATION_AIRPORT)}, weather delay ${esc(p.focal_source?.WEATHER_DELAY)} min, late aircraft ${esc(p.focal_source?.LATE_AIRCRAFT_DELAY)} min. Source rows: ${esc((p.source_rows||[]).join(', '))}.`],
+    ['Constructed', esc(p.disruption?.label||'')],
+    ['Derived', esc((p.derived_fields||[]).join('; '))],
+    ['Synthetic', esc((p.synthetic_fields||[]).join('; '))],
+    ['Withheld', `Recorded outcome kept away from agents: ${esc(Object.entries(p.recorded_outcome_withheld||{}).map(([k,v])=>`${k} ${v}`).join(', ')||'none')}. ${esc(p.not_used||'')}`],
+    ['Traffic', esc(p.background_traffic?.note||'')],
+    ['Scope', esc(p.scope||'')]];
+  return `<div class="src-list">${items.map(([k,v])=>`<div class="src-item"><span class="tag ${k==='Synthetic'||k==='Constructed'?'warn':k==='Historical'?'ok':''}">${k}</span><span>${v}</span></div>`).join('')}</div>`;
+}
+function evalReading(sum, flights){
+  const pct=(a,b)=>b?Math.round((a-b)/b*100):0;
+  const ot=pct(sum('fixed','crew_overtime'),sum('fcfs','crew_overtime')), dd=pct(sum('fixed','departure_delay'),sum('fcfs','departure_delay'));
+  return `Reading: rule-based agents place ${sum('fixed','resolved')} of ${flights} flights (FCFS ${sum('fcfs','resolved')}). Crew overtime changes by ${ot>0?'+':''}${ot}% and departure delay by ${dd>0?'+':''}${dd}% against FCFS. Most departure delay is late inbound aircraft that no plan can remove.`;
+}
+/* ESP32 boards: same status the boards poll, refreshed every 1.5 s */
+const BOARD_TEXT={WAITING:'Waiting for plan',NEGOTIATING:'Negotiating',AWAITING_APPROVAL:'Awaiting your approval',PLAN_APPROVED:'Plan approved',UNRESOLVED:'Unresolved, review'};
+async function renderBoards(){
+  const el=$('#boards'); if(!S.state||el.contains(document.activeElement)) return;
+  let h; try{ h=await api('/api/hardware'); }catch(e){ return; }
+  const opts=id=>S.state.flights.map(f=>`<option ${f.id===id?'selected':''}>${esc(f.id)}</option>`).join('');
+  el.innerHTML=h.boards.map(b=>{ const key=b.flight_id==='FLIGHT A'?'flight_a':'flight_b';
+    return `<div class="board"><span class="led ${b.led.toLowerCase()}" title="Board light: ${b.led.toLowerCase()}"></span><b>${b.flight_id==='FLIGHT A'?'Board A':'Board B'}</b>
+      <select data-bind="${key}" aria-label="Flight shown on ${b.flight_id}">${opts(h.bindings[b.flight_id])}</select>
+      <span>${BOARD_TEXT[b.status]}</span>${b.landing_time!=='--'?`<span class="muted">lands ${esc(b.landing_time)}, gate ${esc(b.gate)}</span>`:''}</div>`; }).join('')
+    + (h.urls.length?`<span class="small muted">Boards connect to ${esc(h.urls[0])}</span>`:'');
+  el.querySelectorAll('select[data-bind]').forEach(sel=>sel.onchange=async()=>{ try{ await api('/api/hardware/bindings','PUT',{[sel.dataset.bind]:sel.value}); sel.blur(); renderBoards(); toast(`${sel.dataset.bind==='flight_a'?'Board A':'Board B'} now shows ${sel.value}`); }catch(e){ toast(e.message); } });
+}
+setInterval(renderBoards,1500);
+async function loadLimits(){ try{ S.limits=await api('/constraints'); }catch(e){ S.limits={error:e.message}; } if(S.tab==='limits') renderTab(); }
+function limitsTab(){
+  const c=S.limits; if(!c) return '<div class="empty">Loading limits…</div>'; if(c.error) return `<div class="empty">${esc(c.error)}</div>`;
+  const a=c.airport||{}; const f=c.fuel_and_crew; const sc=c.scenario;
+  const row=(k,v)=>`<dt>${k}</dt><dd>${v}</dd>`;
+  return `<div class="cols">
+    <div><h3>Airport${a.iata?' '+esc(a.iata):''}</h3><dl class="kv" style="margin-top:8px">${row('Class',esc(a.size_class||'Synthetic'))}${row('Active runways',`${sc.active_runways} (${sc.active_runways>=2?'arrival and departure streams':'one mixed stream'})`)}${row('Runway movements per hour',sc.max_ops_per_hour??'no cap')}${row('Spare gates',esc(sc.gates.join(', ')))}${row('Minimum turnaround',a.min_turnaround_min?a.min_turnaround_min+' min':'see flights')}${row('Gate-change notice',mins(sc.gate_change_notice_s)+' min before landing')}</dl></div>
+    <div><h3>Fuel and crew</h3><dl class="kv" style="margin-top:8px">${row('Final reserve',f.final_reserve_min+' min, never used (hard)')}${row('Spare fuel on arrival',f.spare_on_arrival_min+' min of holding')}${row('Contingency',f.contingency_pct+'% of trip (Pilot prefers not to use)')}${row('Holding burn',`${f.burn_narrow_kg_h.toLocaleString()} kg/h narrowbody, ${f.burn_wide_kg_h.toLocaleString()} kg/h widebody`)}${row('Flight crew duty',f.flight_duty_max_h+' h from report (Pilot limit)')}${row('Ground crew shift',`${f.ground_shift_h} h, overtime at ${f.overtime_multiplier}x`)}</dl></div>
+    <div><h3>Wake separation</h3><table style="margin-top:8px"><thead><tr><th>Leader</th><th class="l">Follower</th><th>Arrivals</th><th>Departures</th></tr></thead><tbody>${c.wake_table.map(w=>`<tr><td>${esc(w.leader)}</td><td class="l">${esc(w.follower)}</td><td>${w.nm} nm</td><td>${w.departure_s} s</td></tr>`).join('')}</tbody></table><p class="small muted">Arrival nm converted at ${c.approach_speed_kt} kt.</p></div>
+  </div>
+  <div class="src-list"><h3>Rules of play</h3>${c.rules_of_play.map(r=>`<div class="src-item"><span class="tag">${esc(r.topic)}</span><span>${esc(r.detail)}</span></div>`).join('')}
+  <h3 style="margin-top:8px">How we apply them (stated changes and assumptions)</h3>${c.stated_changes.map(t=>`<div class="src-item"><span class="tag warn">Stated</span><span>${esc(t)}</span></div>`).join('')}
+  <p class="small muted">Source: ${esc(c.source)}${c.loaded_from_workbook?', read at server start':`, not read (${esc(c.load_error||'')}); built-in copies used`}. ${c.airports_in_workbook} airports in the workbook.</p></div>`;
+}
+async function loadEval(){ try{ S.evalData = await api('/results/'+(S.evalSet||'historical-30')); }catch(e){ S.evalData={error:e.message}; } if(S.tab==='eval') renderTab(); }
+function evalTab(){
+  const set=S.evalSet||'historical-30';
+  const sw=`<div class="seg" role="group" aria-label="Result set"><button data-evalset="historical-30" aria-pressed="${set==='historical-30'}">30 historical windows</button><button data-evalset="synthetic-smoke" aria-pressed="${set==='synthetic-smoke'}">Synthetic profiles</button></div>`;
+  const d=S.evalData; if(!d) return `<div class="eval">${sw}<div class="muted">Loading results…</div></div>`;
+  if(d.error) return `<div class="eval">${sw}<div class="muted">${esc(d.error)}</div></div>`;
+  const methods=[['fcfs','FCFS (today)'],['central','Central planner'],['fixed_greedy','Agents, no solver'],['fixed','Agents, rules'],['claude','Agents, Claude']].filter(([m])=>d.rows.some(r=>r.method===m));
+  const by=m=>d.rows.filter(r=>r.method===m); const flights=by('fcfs').reduce((a,r)=>a+r.flights,0); const nS=by('fcfs').length;
+  const sum=(m,k)=>by(m).reduce((a,r)=>a+r.metrics[k],0);
+  const groups=[
+    ['Flights placed', m=>sum(m,'resolved'), v=>`${v}/${flights}`, true],
+    ['Agents agreed', m=>by(m).filter(r=>r.decision==='CONSENSUS').length, v=>`${v}/${nS}`, true, true],
+    ['Crew overtime', m=>sum(m,'crew_overtime')/60, v=>`${Math.round(v)} min`],
+    ['Airborne holding', m=>sum(m,'holding')/60, v=>`${Math.round(v)} min`],
+    ['Departure delay', m=>sum(m,'departure_delay')/60, v=>`${Math.round(v)} min`],
+    ['Gate changes', m=>sum(m,'gate_changes'), v=>`${v}`]];
+  const viol=methods.reduce((a,[m])=>a+by(m).reduce((b,r)=>b+r.violations,0),0);
+  const bars=groups.map(([title,f,fmt,higherBetter,agentsOnly])=>{ const ms=methods.filter(([m])=>!agentsOnly||!['fcfs','central'].includes(m));
+    const vals=ms.map(([m])=>f(m)); const max=Math.max(...vals,1);
+    return `<div class="bar-group"><h3>${title}</h3>${ms.map(([m,label],i)=>`<div class="bar-row ${m==='fixed'||m==='claude'?'ours':''}"><span>${label}</span><div class="bar-track"><div class="bar-fill" style="width:${(vals[i]/max*100).toFixed(1)}%"></div></div><span class="num" style="text-align:right">${fmt(vals[i])}</span></div>`).join('')}</div>`; }).join('');
+  return `<div class="eval">${sw}<div class="note">${esc(d.label)} ${nS} scenarios, ${flights} flights. Every method uses the same code checks: ${viol} violations across all runs. Lower is better except where flights placed and agreement are counted. Simulation results, not real-world savings.</div>
+    <div class="bars">${bars}</div>
+    <div class="note">${set==='historical-30'?evalReading(sum, flights):'Synthetic profiles stress closures, gate outages, a single crew, tight fuel and an emergency. They are fixtures, not evidence about real operations.'}</div></div>`;
+}
+
+/* ---------- review bar ---------- */
+function renderReview(){
+  const r=S.run; const st=$('#reviewStatus'); const ap=$('#approve');
+  if(!r||r.status==='RUNNING'||!r.plan){ $('#logLink').hidden=true; st.className='status'; st.textContent=r?.status==='RUNNING'?'Negotiating':'No plan'; ap.disabled=true;
+    $('#reviewSummary').innerHTML='<span>Simulation only. The coordinator approves every plan.</span>'; return; }
+  const failed=(r.checks||[]).filter(c=>!c.passed).length; const p=r.plan;
+  const ok=r.status==='REVIEW_REQUIRED'&&!p.unresolved.length&&!failed;
+  st.className='status '+(r.status==='APPROVED'?'ok':r.status==='STALE'?'bad':ok?'':'warn');
+  st.textContent={APPROVED:'Approved for simulation',STALE:'Stale: scenario changed',REVIEW_REQUIRED:ok?'Ready for review':'Cannot approve'}[r.status]||r.status;
+  ap.disabled=!ok;
+  const ll=$('#logLink'); ll.hidden=false; ll.href=`/runs/${r.id||S.runId}/log`; ll.setAttribute('download',`consensus-log-${(r.id||S.runId).slice(0,8)}.json`);
+  const why = p.unresolved.length ? `<span style="color:var(--bad)">${p.unresolved.length} flight${p.unresolved.length>1?'s':''} unresolved: decide diversions before approving.</span>` : '';
+  $('#reviewSummary').innerHTML=`<span>Plan <b>${p.id}</b></span><span><b>${r.checks.length-failed}/${r.checks.length}</b> checks passed</span><span><b>${p.metrics.resolved}/${S.state.flights.length}</b> flights placed</span>${why}<span class="muted">Simulation only.</span>`;
+}
+
+/* ---------- actions ---------- */
+function renderAll(){ renderBoards(); renderSituation(); renderOutcome(); renderGantt(); renderNeg(); renderTab(); renderReview(); }
+function previewPlan(id){ if(!S.run) return; S.preview = id===S.run.plan.id ? null : id; $('#preview').classList.toggle('on',!!S.preview);
+  $('#previewText').textContent = S.preview ? `Previewing plan ${S.preview}. It was not chosen; the outcome above still shows the chosen plan.` : ''; renderGantt(); renderTab(); }
+$('#previewBack').onclick=()=>previewPlan(S.run.plan.id);
+function setMode(m){ S.mode=m; $('#modeFixed').setAttribute('aria-pressed',String(m==='fixed')); $('#modeClaude').setAttribute('aria-pressed',String(m==='claude')); }
+$('#modeFixed').onclick=()=>setMode('fixed'); $('#modeClaude').onclick=()=>setMode('claude');
+function busy(on){ ['#run','#loadRow','#loadDemo'].forEach(s=>$(s).disabled=on); }
+async function loadScenario(fn, msg){ busy(true); markOwn(); try{ await fn(); S.run=null; S.preview=null; S.selFlight=null; $('#preview').classList.remove('on'); await refresh(); toast(msg); }catch(e){ toast(e.message); } finally{ busy(false); } }
+$('#loadRow').onclick=()=>{ const row=+$('#row').value||+$('#suggest').value; if(!row){ toast('Enter a DOT row number or pick a suggested row.'); return; }
+  loadScenario(()=>api('/scenario/from-csv','POST',{row}), `Loaded row ${row}`); };
+$('#suggest').onchange=()=>{ if($('#suggest').value){ $('#row').value=$('#suggest').value; $('#loadRow').click(); } };
+$('#row').onkeydown=e=>{ if(e.key==='Enter') $('#loadRow').click(); };
+$('#loadDemo').onclick=()=>loadScenario(async()=>api('/scenario','PUT',await api('/scenario/demo')), 'Loaded synthetic demo');
+$('#run').onclick=async()=>{
+  busy(true); S.preview=null; $('#preview').classList.remove('on'); S.ownRun=true; markOwn();
+  try{
+    const run=await api('/runs','POST',{mode:S.mode});
+    adoptRun(run.id, run.mode, run.state_version); poll();
+  }catch(e){ toast(e.message); S.run=null; busy(false); renderAll(); }
+  finally{ S.ownRun=false; }
+};
+function adoptRun(id, mode, version){
+  if(S.runId===id && S.run) return;
+  S.runId=id; S.run={id, mode, state_version:version, status:'RUNNING'}; S.preview=null; busy(true); renderAll();
+}
+/* One persistent event stream: the dashboard follows every state change, including ones it did not
+   make (hardware buttons, another browser, the API). Approved plans go stale the moment state changes. */
+S.liveBy={}; let lastEvent=0, ownUntil=0;
+const markOwn=()=>{ ownUntil=Date.now()+2500; };
+S.liveFor=id=>S.liveBy[id]||[];
+async function startStream(){ try{ lastEvent=(await api('/events/latest')).id; openStream(); }catch(e){ setTimeout(startStream,3000); } }
+function openStream(){
+  if(S.es) S.es.close();
+  S.es=new EventSource(`/events/stream?after=${lastEvent}`);
+  S.es.onmessage=ev=>{ const e=JSON.parse(ev.data); lastEvent=Math.max(lastEvent,e.event_id||0); onEvent(e); };
+  S.es.onerror=()=>{ S.es.close(); setTimeout(openStream,2000); };   // resume from the last event seen
+}
+let refreshTimer;
+function onEvent(e){
+  if(e.type==='state_changed'){
+    clearTimeout(refreshTimer); refreshTimer=setTimeout(()=>refresh().catch(()=>{}),150);
+    if(Date.now()>ownUntil) toast(e.reason==='hardware_event'?'Hardware event changed the scenario. The previous plan is stale.':`Scenario changed (${String(e.reason).replaceAll('_',' ')}). The previous plan is stale.`);
+  } else if(e.type==='run_started'){
+    if(e.run_id!==S.runId){ const external=!S.ownRun; adoptRun(e.run_id, e.mode, e.state_version); if(external){ toast('A new negotiation started from a hardware or external event'); poll(); } }
+  } else if(e.run_id && ['menu','agent_message','coordinator','agent_error'].includes(e.type)){
+    (S.liveBy[e.run_id]=S.liveBy[e.run_id]||[]).push(e); if(e.run_id===S.runId && S.run?.status==='RUNNING') renderNeg();
+  } else if(e.type==='run_completed' && e.run_id===S.runId){ finish();
+  } else if(e.type==='approved' && e.run_id===S.runId && Date.now()>ownUntil){
+    api('/runs/'+S.runId).then(r=>{ S.run=r; renderReview(); toast('Plan approved from another session'); }).catch(()=>{});
+  }
+}
+let finishing=false;
+async function finish(){ if(finishing) return; finishing=true; try{ S.run=await api('/runs/'+S.runId); S.baseline=(await api('/baseline')).plan; renderAll(); } finally{ busy(false); finishing=false; } }
+async function poll(){ const id=S.runId; for(let i=0;i<300;i++){ await new Promise(r=>setTimeout(r,700)); if(S.runId!==id) return;
+  const r=await api('/runs/'+id).catch(()=>null); if(r && r.status!=='RUNNING'){ if(S.run?.status==='RUNNING') finish(); return; } } }
+$('#approve').onclick=async()=>{ try{ markOwn(); await api(`/runs/${S.runId}/approve`,'POST'); S.run=await api('/runs/'+S.runId); renderReview(); toast('Plan approved for the simulation'); }catch(e){ toast(e.message); } };
+/* disruption popover */
+const pop=$('#injectPop');
+function syncInject(){ const k=$('#dKind').value; $('#dFlightWrap').style.display=['delay','emergency','turbulence'].includes(k)?'':'none';
+  $('#dGateWrap').style.display=k==='gate_closure'?'':'none'; $('#dMinWrap').style.display=['runway_closure','delay','gate_closure'].includes(k)?'':'none'; }
+$('#injectBtn').onclick=()=>{ const open=!pop.classList.contains('open'); pop.classList.toggle('open',open); $('#injectBtn').setAttribute('aria-expanded',String(open)); syncInject(); if(open) $('#dKind').focus(); };
+$('#dCancel').onclick=()=>{ pop.classList.remove('open'); $('#injectBtn').setAttribute('aria-expanded','false'); };
+$('#dKind').onchange=syncInject;
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') $('#dCancel').click(); });
+$('#dApply').onclick=async()=>{ const s=S.state; if(!s) return; const k=$('#dKind').value; const f=$('#dFlight').value; const sec=Math.max(1,+$('#dMin').value||1)*60;
+  const focal=s.flights.find(x=>x.id===s.focal_id); const start=focal?focal.ready:0;
+  const body={runway_closure:{kind:'runway_closure',start,end:start+sec},delay:{kind:'delay',flight_id:f,start:sec},emergency:{kind:'emergency',flight_id:f},
+    turbulence:{kind:'turbulence',flight_id:f},gate_closure:{kind:'gate_closure',gate:$('#dGate').value,start,end:start+sec}}[k];
+  try{ markOwn(); await api('/disruptions','POST',body); pop.classList.remove('open'); await refresh(); toast('Disruption added. Run the negotiation again.'); }catch(e){ toast(e.message); } };
+/* tabs, toggles, tooltip, theme */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{ S.tab=t.dataset.tab; renderTab(); });
+$('#showFcfs').onchange=renderGantt; $('#showBg').onchange=renderGantt;
+const tip=$('#tip');
+$('#gantt').addEventListener('mousemove',e=>{ const t=e.target.closest('[data-tip]'); if(!t){ tip.style.display='none'; return; }
+  tip.textContent=t.dataset.tip; tip.style.display='block'; const w=tip.offsetWidth; tip.style.left=Math.min(e.clientX+14, innerWidth-w-8)+'px'; tip.style.top=(e.clientY+14)+'px'; });
+$('#gantt').addEventListener('mouseleave',()=>tip.style.display='none');
+$('#gantt').addEventListener('click',e=>{ const t=e.target.closest('[data-flight]'); if(!t) return; S.selFlight=S.selFlight===t.dataset.flight?null:t.dataset.flight; renderGantt(); if(S.tab==='flights') renderTab(); });
+$('#theme').onclick=()=>{ const cur=document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  const next=cur==='dark'?'light':'dark'; document.documentElement.dataset.theme=next; try{ localStorage.setItem('rd-theme',next); }catch(e){} renderGantt(); };
+try{ const t=localStorage.getItem('rd-theme'); if(t) document.documentElement.dataset.theme=t; }catch(e){}
+new ResizeObserver(()=>document.documentElement.style.setProperty('--hdr',$('.top').offsetHeight+'px')).observe($('.top'));
+let rz; addEventListener('resize',()=>{ clearTimeout(rz); rz=setTimeout(renderGantt,120); });
+startStream();
+refresh().catch(e=>{ $('#where').textContent='Backend not reachable'; $('#what').textContent='Start the server with: python -m uvicorn recovery.api:app --port 8000'; });
+loadSuggestions();
+</script>
+</body>
+</html>

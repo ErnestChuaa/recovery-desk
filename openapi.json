@@ -1,0 +1,1473 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Recovery Desk",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/status/{flight_path}": {
+      "get": {
+        "summary": "Api Status",
+        "operationId": "api_status_api_status__flight_path__get",
+        "parameters": [
+          {
+            "name": "flight_path",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Flight Path"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event": {
+      "post": {
+        "summary": "Api Event",
+        "operationId": "api_event_api_event_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HardwareEvent"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hardware": {
+      "get": {
+        "summary": "Api Hardware",
+        "operationId": "api_hardware_api_hardware_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hardware/bindings": {
+      "put": {
+        "summary": "Api Bind",
+        "operationId": "api_bind_api_hardware_bindings_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Bindings"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/state": {
+      "get": {
+        "summary": "State",
+        "operationId": "state_state_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scenario": {
+      "put": {
+        "summary": "Scenario",
+        "operationId": "scenario_scenario_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Scenario"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scenario/from-csv": {
+      "post": {
+        "summary": "From Csv",
+        "operationId": "from_csv_scenario_from_csv_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CsvRow"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scenario/suggest": {
+      "get": {
+        "summary": "Suggest Rows",
+        "operationId": "suggest_rows_scenario_suggest_get",
+        "parameters": [
+          {
+            "name": "n",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10,
+              "title": "N"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ui/fonts/{name}": {
+      "get": {
+        "summary": "Ui Font",
+        "operationId": "ui_font_ui_fonts__name__get",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ui": {
+      "get": {
+        "summary": "Ui",
+        "operationId": "ui_ui_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scenario/demo": {
+      "get": {
+        "summary": "Sample",
+        "operationId": "sample_scenario_demo_get",
+        "parameters": [
+          {
+            "name": "seed",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "title": "Seed"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/baseline": {
+      "get": {
+        "summary": "Baseline",
+        "operationId": "baseline_baseline_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/disruptions": {
+      "post": {
+        "summary": "Disruption",
+        "operationId": "disruption_disruptions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Disruption"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runs": {
+      "post": {
+        "summary": "Start",
+        "operationId": "start_runs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NegotiateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/constraints": {
+      "get": {
+        "summary": "Constraints View",
+        "description": "Operational limits from the organisers' workbook, the rules of play and every stated change.",
+        "operationId": "constraints_view_constraints_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runs/{rid}/log": {
+      "get": {
+        "summary": "Consensus Log",
+        "description": "Consensus log for one run: every turn's structured messages, the decision and why.",
+        "operationId": "consensus_log_runs__rid__log_get",
+        "parameters": [
+          {
+            "name": "rid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Rid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runs/latest": {
+      "get": {
+        "summary": "Latest Run",
+        "description": "Most recent run for the current scenario version (or null), so a dashboard opened later\ncan pick up a negotiation that a board or another session started.",
+        "operationId": "latest_run_runs_latest_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runs/{rid}": {
+      "get": {
+        "summary": "Run",
+        "operationId": "run_runs__rid__get",
+        "parameters": [
+          {
+            "name": "rid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Rid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runs/{rid}/approve": {
+      "post": {
+        "summary": "Approve",
+        "operationId": "approve_runs__rid__approve_post",
+        "parameters": [
+          {
+            "name": "rid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Rid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runs/{rid}/timeline": {
+      "get": {
+        "summary": "Timeline",
+        "operationId": "timeline_runs__rid__timeline_get",
+        "parameters": [
+          {
+            "name": "rid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Rid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/devices/{device_id}/status": {
+      "get": {
+        "summary": "Status",
+        "operationId": "status_devices__device_id__status_get",
+        "parameters": [
+          {
+            "name": "device_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Device Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/devices": {
+      "get": {
+        "summary": "Devices",
+        "operationId": "devices_devices_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/telemetry": {
+      "post": {
+        "summary": "Telemetry",
+        "operationId": "telemetry_telemetry_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Telemetry"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events": {
+      "get": {
+        "summary": "Events",
+        "operationId": "events_events_get",
+        "parameters": [
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "title": "After"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/latest": {
+      "get": {
+        "summary": "Latest Event",
+        "operationId": "latest_event_events_latest_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/results/{name}": {
+      "get": {
+        "summary": "Results",
+        "operationId": "results_results__name__get",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/stream": {
+      "get": {
+        "summary": "Stream",
+        "operationId": "stream_events_stream_get",
+        "parameters": [
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "title": "After"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Bindings": {
+        "properties": {
+          "flight_a": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Flight A"
+          },
+          "flight_b": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Flight B"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "Bindings"
+      },
+      "CsvRow": {
+        "properties": {
+          "row": {
+            "type": "integer",
+            "title": "Row"
+          }
+        },
+        "type": "object",
+        "required": [
+          "row"
+        ],
+        "title": "CsvRow"
+      },
+      "Disruption": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "runway_closure",
+              "taxi_closure",
+              "gate_closure",
+              "latest",
+              "emergency",
+              "reset_emergency",
+              "turbulence",
+              "reset_turbulence",
+              "delay"
+            ],
+            "title": "Kind"
+          },
+          "start": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Start",
+            "default": 0
+          },
+          "end": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "End",
+            "default": 1
+          },
+          "flight_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Flight Id"
+          },
+          "gate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gate"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "kind"
+        ],
+        "title": "Disruption"
+      },
+      "Flight": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 60,
+            "minLength": 1,
+            "title": "Id"
+          },
+          "ready": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Ready"
+          },
+          "latest": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Latest"
+          },
+          "scheduled_departure": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Scheduled Departure"
+          },
+          "turnaround": {
+            "type": "integer",
+            "minimum": 60.0,
+            "title": "Turnaround",
+            "default": 2100
+          },
+          "taxi": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Taxi",
+            "default": 300
+          },
+          "taxi_out": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Taxi Out"
+          },
+          "wake": {
+            "type": "string",
+            "enum": [
+              "SUPER",
+              "HEAVY",
+              "LARGE",
+              "SMALL"
+            ],
+            "title": "Wake",
+            "default": "LARGE"
+          },
+          "contingency": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Contingency",
+            "default": 0
+          },
+          "duty_end": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duty End"
+          },
+          "enroute_absorb": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Enroute Absorb",
+            "default": 0
+          },
+          "gates": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Gates"
+          },
+          "preferred_gate": {
+            "type": "string",
+            "title": "Preferred Gate"
+          },
+          "connections": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Connections",
+            "default": 0
+          },
+          "connection_deadline": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Connection Deadline",
+            "default": 100000
+          },
+          "emergency": {
+            "type": "boolean",
+            "title": "Emergency",
+            "default": false
+          },
+          "motion_event": {
+            "type": "boolean",
+            "title": "Motion Event",
+            "default": false
+          },
+          "note": {
+            "type": "string",
+            "maxLength": 1200,
+            "title": "Note",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "ready",
+          "latest",
+          "scheduled_departure",
+          "gates",
+          "preferred_gate"
+        ],
+        "title": "Flight"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HardwareEvent": {
+        "properties": {
+          "flight_id": {
+            "type": "string",
+            "title": "Flight Id"
+          },
+          "event": {
+            "type": "string",
+            "enum": [
+              "EMERGENCY",
+              "DISRUPTION",
+              "CLEAR"
+            ],
+            "title": "Event"
+          }
+        },
+        "type": "object",
+        "required": [
+          "flight_id",
+          "event"
+        ],
+        "title": "HardwareEvent"
+      },
+      "Move": {
+        "properties": {
+          "time": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Time"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "A",
+              "D"
+            ],
+            "title": "Kind",
+            "default": "D"
+          },
+          "wake": {
+            "type": "string",
+            "enum": [
+              "SUPER",
+              "HEAVY",
+              "LARGE",
+              "SMALL"
+            ],
+            "title": "Wake",
+            "default": "LARGE"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "time"
+        ],
+        "title": "Move",
+        "description": "A fixed background runway movement (another flight we do not negotiate)."
+      },
+      "NegotiateRequest": {
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "fixed",
+              "claude"
+            ],
+            "title": "Mode",
+            "default": "fixed"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "NegotiateRequest"
+      },
+      "Scenario": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Id"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Version",
+            "default": 1
+          },
+          "horizon": {
+            "type": "integer",
+            "maximum": 86400.0,
+            "minimum": 600.0,
+            "title": "Horizon",
+            "default": 14400
+          },
+          "separation": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Separation",
+            "default": 60
+          },
+          "wake_arrival_s": {
+            "additionalProperties": {
+              "additionalProperties": {
+                "type": "integer"
+              },
+              "type": "object"
+            },
+            "type": "object",
+            "title": "Wake Arrival S"
+          },
+          "wake_departure_s": {
+            "additionalProperties": {
+              "additionalProperties": {
+                "type": "integer"
+              },
+              "type": "object"
+            },
+            "type": "object",
+            "title": "Wake Departure S"
+          },
+          "active_runways": {
+            "type": "integer",
+            "maximum": 10.0,
+            "minimum": 1.0,
+            "title": "Active Runways",
+            "default": 1
+          },
+          "max_ops_per_hour": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Ops Per Hour"
+          },
+          "crew_count": {
+            "type": "integer",
+            "maximum": 20.0,
+            "minimum": 1.0,
+            "title": "Crew Count",
+            "default": 2
+          },
+          "crew_shift_end": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Crew Shift End",
+            "default": []
+          },
+          "hold_pad_capacity": {
+            "type": "integer",
+            "maximum": 20.0,
+            "minimum": 0.0,
+            "title": "Hold Pad Capacity",
+            "default": 2
+          },
+          "max_ground_wait": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Max Ground Wait",
+            "default": 2400
+          },
+          "decision_time": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Decision Time",
+            "default": 0
+          },
+          "gate_change_notice": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Gate Change Notice",
+            "default": 1200
+          },
+          "flights": {
+            "items": {
+              "$ref": "#/components/schemas/Flight"
+            },
+            "type": "array",
+            "maxItems": 10,
+            "minItems": 1,
+            "title": "Flights"
+          },
+          "gates": {
+            "additionalProperties": {
+              "items": {
+                "$ref": "#/components/schemas/Window"
+              },
+              "type": "array"
+            },
+            "type": "object",
+            "title": "Gates"
+          },
+          "runway_closed": {
+            "items": {
+              "$ref": "#/components/schemas/Window"
+            },
+            "type": "array",
+            "title": "Runway Closed",
+            "default": []
+          },
+          "background": {
+            "items": {
+              "$ref": "#/components/schemas/Move"
+            },
+            "type": "array",
+            "title": "Background",
+            "default": []
+          },
+          "runway_reserved": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Runway Reserved",
+            "default": []
+          },
+          "taxi_closed": {
+            "items": {
+              "$ref": "#/components/schemas/Window"
+            },
+            "type": "array",
+            "title": "Taxi Closed",
+            "default": []
+          },
+          "focal_id": {
+            "type": "string",
+            "title": "Focal Id"
+          },
+          "provenance": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Provenance",
+            "default": {}
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "flights",
+          "gates",
+          "focal_id"
+        ],
+        "title": "Scenario"
+      },
+      "Telemetry": {
+        "properties": {
+          "device_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,40}$",
+            "title": "Device Id"
+          },
+          "flight_id": {
+            "type": "string",
+            "title": "Flight Id"
+          },
+          "boot_id": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Boot Id"
+          },
+          "seq": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Seq"
+          },
+          "uptime_ms": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Uptime Ms"
+          },
+          "emergency_flag": {
+            "type": "boolean",
+            "title": "Emergency Flag",
+            "default": false
+          },
+          "motion_score": {
+            "type": "number",
+            "maximum": 20.0,
+            "minimum": 0.0,
+            "title": "Motion Score",
+            "default": 0
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "device_id",
+          "flight_id",
+          "boot_id",
+          "seq",
+          "uptime_ms"
+        ],
+        "title": "Telemetry"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "Window": {
+        "properties": {
+          "start": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Start"
+          },
+          "end": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "End"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "start",
+          "end"
+        ],
+        "title": "Window"
+      }
+    }
+  }
+}

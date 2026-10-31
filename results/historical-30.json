@@ -1,0 +1,3959 @@
+{
+  "label": "Historical DOT windows (seed 0): random eligible rows with >=4 arrivals within +/-90 min; demo rows [169609, 280983] excluded. Limits from the organisers' workbook; other operations synthetic (see provenance).",
+  "scenario_count": 30,
+  "rows": [
+    {
+      "scenario": "dot-244758",
+      "flights": 8,
+      "method": "fcfs",
+      "plan_id": "88147742f947",
+      "metrics": {
+        "resolved": 8,
+        "holding": 240,
+        "holding_fuel_kg": 160,
+        "speed_absorb": 210,
+        "ground_wait": 1260,
+        "departure_delay": 38310,
+        "crew_overtime": 2910,
+        "crew_overtime_cost": 4365.0,
+        "missed_connections": 127,
+        "gate_changes": 0,
+        "holding_stack": 1
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.002,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-244758",
+      "flights": 8,
+      "method": "central",
+      "plan_id": "30150191cf46",
+      "metrics": {
+        "resolved": 8,
+        "holding": 240,
+        "holding_fuel_kg": 160,
+        "speed_absorb": 480,
+        "ground_wait": 1230,
+        "departure_delay": 38550,
+        "crew_overtime": 2520,
+        "crew_overtime_cost": 3780.0,
+        "missed_connections": 127,
+        "gate_changes": 0,
+        "holding_stack": 1
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.719,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-244758",
+      "flights": 8,
+      "method": "fixed_greedy",
+      "plan_id": "88147742f947",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 240.0,
+        "holding_fuel_kg": 160.0,
+        "speed_absorb": 210.0,
+        "ground_wait": 1260.0,
+        "departure_delay": 38310.0,
+        "crew_overtime": 2910.0,
+        "crew_overtime_cost": 4365.0,
+        "missed_connections": 127.0,
+        "gate_changes": 0.0,
+        "holding_stack": 1.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.029,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 8
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-244758",
+      "flights": 8,
+      "method": "fixed",
+      "plan_id": "30150191cf46",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 240.0,
+        "holding_fuel_kg": 160.0,
+        "speed_absorb": 480.0,
+        "ground_wait": 1230.0,
+        "departure_delay": 38550.0,
+        "crew_overtime": 2520.0,
+        "crew_overtime_cost": 3780.0,
+        "missed_connections": 127.0,
+        "gate_changes": 0.0,
+        "holding_stack": 1.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.424,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [
+        "relaxed"
+      ],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-292105",
+      "flights": 5,
+      "method": "fcfs",
+      "plan_id": "0a791867b224",
+      "metrics": {
+        "resolved": 5,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 30,
+        "ground_wait": 0,
+        "departure_delay": 14730,
+        "crew_overtime": 2100,
+        "crew_overtime_cost": 3150.0,
+        "missed_connections": 19,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-292105",
+      "flights": 5,
+      "method": "central",
+      "plan_id": "21cb0d645ca3",
+      "metrics": {
+        "resolved": 5,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 270,
+        "ground_wait": 0,
+        "departure_delay": 14970,
+        "crew_overtime": 420,
+        "crew_overtime_cost": 630.0,
+        "missed_connections": 19,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.093,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 5,
+        "n": 5,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-292105",
+      "flights": 5,
+      "method": "fixed_greedy",
+      "plan_id": "0a791867b224",
+      "metrics": {
+        "resolved": 5.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 30.0,
+        "ground_wait": 0.0,
+        "departure_delay": 14730.0,
+        "crew_overtime": 2100.0,
+        "crew_overtime_cost": 3150.0,
+        "missed_connections": 19.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.012,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 5
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-292105",
+      "flights": 5,
+      "method": "fixed",
+      "plan_id": "0a791867b224",
+      "metrics": {
+        "resolved": 5.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 30.0,
+        "ground_wait": 0.0,
+        "departure_delay": 14730.0,
+        "crew_overtime": 2100.0,
+        "crew_overtime_cost": 3150.0,
+        "missed_connections": 19.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.113,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 5,
+        "n": 5,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [
+        "strict"
+      ],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-346945",
+      "flights": 6,
+      "method": "fcfs",
+      "plan_id": "2844c54634f3",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 0,
+        "departure_delay": 22260,
+        "crew_overtime": 2100,
+        "crew_overtime_cost": 3150.0,
+        "missed_connections": 58,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-346945",
+      "flights": 6,
+      "method": "central",
+      "plan_id": "2844c54634f3",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 0,
+        "departure_delay": 22260,
+        "crew_overtime": 2100,
+        "crew_overtime_cost": 3150.0,
+        "missed_connections": 58,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.104,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-346945",
+      "flights": 6,
+      "method": "fixed_greedy",
+      "plan_id": "2844c54634f3",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 0.0,
+        "departure_delay": 22260.0,
+        "crew_overtime": 2100.0,
+        "crew_overtime_cost": 3150.0,
+        "missed_connections": 58.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.016,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 6
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-346945",
+      "flights": 6,
+      "method": "fixed",
+      "plan_id": "2844c54634f3",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 0.0,
+        "departure_delay": 22260.0,
+        "crew_overtime": 2100.0,
+        "crew_overtime_cost": 3150.0,
+        "missed_connections": 58.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.108,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-86985",
+      "flights": 4,
+      "method": "fcfs",
+      "plan_id": "e8ddd1223f83",
+      "metrics": {
+        "resolved": 4,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 540,
+        "departure_delay": 14820,
+        "crew_overtime": 1020,
+        "crew_overtime_cost": 1530.0,
+        "missed_connections": 21,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-86985",
+      "flights": 4,
+      "method": "central",
+      "plan_id": "abef17ac9a4c",
+      "metrics": {
+        "resolved": 4,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 300,
+        "ground_wait": 240,
+        "departure_delay": 14820,
+        "crew_overtime": 1020,
+        "crew_overtime_cost": 1530.0,
+        "missed_connections": 21,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.122,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 4,
+        "n": 4,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-86985",
+      "flights": 4,
+      "method": "fixed_greedy",
+      "plan_id": "e8ddd1223f83",
+      "metrics": {
+        "resolved": 4.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 540.0,
+        "departure_delay": 14820.0,
+        "crew_overtime": 1020.0,
+        "crew_overtime_cost": 1530.0,
+        "missed_connections": 21.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.048,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 4
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-86985",
+      "flights": 4,
+      "method": "fixed",
+      "plan_id": "abef17ac9a4c",
+      "metrics": {
+        "resolved": 4.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 300.0,
+        "ground_wait": 240.0,
+        "departure_delay": 14820.0,
+        "crew_overtime": 1020.0,
+        "crew_overtime_cost": 1530.0,
+        "missed_connections": 21.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.186,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 4,
+        "n": 4,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [
+        "relaxed"
+      ],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-68096",
+      "flights": 8,
+      "method": "fcfs",
+      "plan_id": "74b4ecb961ff",
+      "metrics": {
+        "resolved": 8,
+        "holding": 420,
+        "holding_fuel_kg": 280,
+        "speed_absorb": 420,
+        "ground_wait": 8160,
+        "departure_delay": 28440,
+        "crew_overtime": 2220,
+        "crew_overtime_cost": 3330.0,
+        "missed_connections": 144,
+        "gate_changes": 0,
+        "holding_stack": 1
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.009,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-68096",
+      "flights": 8,
+      "method": "central",
+      "plan_id": "293adf6f9040",
+      "metrics": {
+        "resolved": 8,
+        "holding": 420,
+        "holding_fuel_kg": 280,
+        "speed_absorb": 420,
+        "ground_wait": 8160,
+        "departure_delay": 28440,
+        "crew_overtime": 600,
+        "crew_overtime_cost": 900.0,
+        "missed_connections": 144,
+        "gate_changes": 0,
+        "holding_stack": 1
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 4.708,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-68096",
+      "flights": 8,
+      "method": "fixed_greedy",
+      "plan_id": "74b4ecb961ff",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 420.0,
+        "holding_fuel_kg": 280.0,
+        "speed_absorb": 420.0,
+        "ground_wait": 8160.0,
+        "departure_delay": 28440.0,
+        "crew_overtime": 2220.0,
+        "crew_overtime_cost": 3330.0,
+        "missed_connections": 144.0,
+        "gate_changes": 0.0,
+        "holding_stack": 1.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.329,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 8
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-68096",
+      "flights": 8,
+      "method": "fixed",
+      "plan_id": "02b4cf91ac04",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 420.0,
+        "holding_fuel_kg": 280.0,
+        "speed_absorb": 420.0,
+        "ground_wait": 8160.0,
+        "departure_delay": 28440.0,
+        "crew_overtime": 600.0,
+        "crew_overtime_cost": 900.0,
+        "missed_connections": 144.0,
+        "gate_changes": 2.0,
+        "holding_stack": 1.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 4.783,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME",
+          "GATE_CHANGES"
+        ]
+      },
+      "mediation": [
+        "relaxed"
+      ],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-344612",
+      "flights": 8,
+      "method": "fcfs",
+      "plan_id": "503041f0d07c",
+      "metrics": {
+        "resolved": 8,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 30,
+        "ground_wait": 0,
+        "departure_delay": 41970,
+        "crew_overtime": 5400,
+        "crew_overtime_cost": 8100.0,
+        "missed_connections": 101,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.002,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-344612",
+      "flights": 8,
+      "method": "central",
+      "plan_id": "19d75f239b8c",
+      "metrics": {
+        "resolved": 8,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 930,
+        "ground_wait": 690,
+        "departure_delay": 43560,
+        "crew_overtime": 420,
+        "crew_overtime_cost": 630.0,
+        "missed_connections": 101,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.32,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-344612",
+      "flights": 8,
+      "method": "fixed_greedy",
+      "plan_id": "e8658a77c076",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 30.0,
+        "ground_wait": 0.0,
+        "departure_delay": 41970.0,
+        "crew_overtime": 3300.0,
+        "crew_overtime_cost": 4950.0,
+        "missed_connections": 101.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.041,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 8
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-344612",
+      "flights": 8,
+      "method": "fixed",
+      "plan_id": "19d75f239b8c",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 930.0,
+        "ground_wait": 690.0,
+        "departure_delay": 43560.0,
+        "crew_overtime": 420.0,
+        "crew_overtime_cost": 630.0,
+        "missed_connections": 101.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.456,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {
+        "ATC": [
+          "THROUGHPUT_LOSS"
+        ],
+        "GROUND": [
+          "TURNAROUND_DELAY"
+        ]
+      },
+      "mediation": [
+        "relaxed"
+      ],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-31307",
+      "flights": 5,
+      "method": "fcfs",
+      "plan_id": "c1b5622cbafc",
+      "metrics": {
+        "resolved": 5,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 240,
+        "departure_delay": 13800,
+        "crew_overtime": 2100,
+        "crew_overtime_cost": 3150.0,
+        "missed_connections": 23,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-31307",
+      "flights": 5,
+      "method": "central",
+      "plan_id": "a98512dfcf6c",
+      "metrics": {
+        "resolved": 5,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 480,
+        "ground_wait": 1080,
+        "departure_delay": 15120,
+        "crew_overtime": 360,
+        "crew_overtime_cost": 540.0,
+        "missed_connections": 23,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.134,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 5,
+        "n": 5,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-31307",
+      "flights": 5,
+      "method": "fixed_greedy",
+      "plan_id": "98d8c6807b40",
+      "metrics": {
+        "resolved": 5.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 240.0,
+        "departure_delay": 13800.0,
+        "crew_overtime": 2100.0,
+        "crew_overtime_cost": 3150.0,
+        "missed_connections": 23.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.027,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 5
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-31307",
+      "flights": 5,
+      "method": "fixed",
+      "plan_id": "53861b18622f",
+      "metrics": {
+        "resolved": 5.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 120.0,
+        "ground_wait": 120.0,
+        "departure_delay": 13800.0,
+        "crew_overtime": 1860.0,
+        "crew_overtime_cost": 2790.0,
+        "missed_connections": 23.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.16,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 5,
+        "n": 5,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [
+        "relaxed"
+      ],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-21988",
+      "flights": 4,
+      "method": "fcfs",
+      "plan_id": "a7962db25bc7",
+      "metrics": {
+        "resolved": 4,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 1200,
+        "departure_delay": 17220,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 53,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-21988",
+      "flights": 4,
+      "method": "central",
+      "plan_id": "a4a260d2d2f3",
+      "metrics": {
+        "resolved": 4,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 240,
+        "ground_wait": 960,
+        "departure_delay": 17220,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 53,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.107,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 4,
+        "n": 4,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-21988",
+      "flights": 4,
+      "method": "fixed_greedy",
+      "plan_id": "a7962db25bc7",
+      "metrics": {
+        "resolved": 4.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 1200.0,
+        "departure_delay": 17220.0,
+        "crew_overtime": 0.0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 53.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.038,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 4
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-21988",
+      "flights": 4,
+      "method": "fixed",
+      "plan_id": "a7962db25bc7",
+      "metrics": {
+        "resolved": 4.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 1200.0,
+        "departure_delay": 17220.0,
+        "crew_overtime": 0.0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 53.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.13,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 4,
+        "n": 4,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-98804",
+      "flights": 4,
+      "method": "fcfs",
+      "plan_id": "3cc83a605ab5",
+      "metrics": {
+        "resolved": 4,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 0,
+        "departure_delay": 10140,
+        "crew_overtime": 1200,
+        "crew_overtime_cost": 1800.0,
+        "missed_connections": 43,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-98804",
+      "flights": 4,
+      "method": "central",
+      "plan_id": "7bf4c70cbbb4",
+      "metrics": {
+        "resolved": 4,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 0,
+        "departure_delay": 10140,
+        "crew_overtime": 480,
+        "crew_overtime_cost": 720.0,
+        "missed_connections": 43,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.1,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 4,
+        "n": 4,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-98804",
+      "flights": 4,
+      "method": "fixed_greedy",
+      "plan_id": "7bf4c70cbbb4",
+      "metrics": {
+        "resolved": 4.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 0.0,
+        "departure_delay": 10140.0,
+        "crew_overtime": 480.0,
+        "crew_overtime_cost": 720.0,
+        "missed_connections": 43.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.012,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 4
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-98804",
+      "flights": 4,
+      "method": "fixed",
+      "plan_id": "7bf4c70cbbb4",
+      "metrics": {
+        "resolved": 4.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 0.0,
+        "departure_delay": 10140.0,
+        "crew_overtime": 480.0,
+        "crew_overtime_cost": 720.0,
+        "missed_connections": 43.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.104,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 4,
+        "n": 4,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [
+        "relaxed"
+      ],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-220364",
+      "flights": 6,
+      "method": "fcfs",
+      "plan_id": "9810617f2e22",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 0,
+        "departure_delay": 19560,
+        "crew_overtime": 1260,
+        "crew_overtime_cost": 1890.0,
+        "missed_connections": 71,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-220364",
+      "flights": 6,
+      "method": "central",
+      "plan_id": "34b12f3fd9af",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 0,
+        "departure_delay": 19560,
+        "crew_overtime": 1260,
+        "crew_overtime_cost": 1890.0,
+        "missed_connections": 71,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.128,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-220364",
+      "flights": 6,
+      "method": "fixed_greedy",
+      "plan_id": "34b12f3fd9af",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 0.0,
+        "departure_delay": 19560.0,
+        "crew_overtime": 1260.0,
+        "crew_overtime_cost": 1890.0,
+        "missed_connections": 71.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.018,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 6
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-220364",
+      "flights": 6,
+      "method": "fixed",
+      "plan_id": "34b12f3fd9af",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 0.0,
+        "departure_delay": 19560.0,
+        "crew_overtime": 1260.0,
+        "crew_overtime_cost": 1890.0,
+        "missed_connections": 71.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.14,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-117801",
+      "flights": 8,
+      "method": "fcfs",
+      "plan_id": "c44534821702",
+      "metrics": {
+        "resolved": 8,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 240,
+        "ground_wait": 1350,
+        "departure_delay": 29490,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 85,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.004,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-117801",
+      "flights": 8,
+      "method": "central",
+      "plan_id": "a05852804c5d",
+      "metrics": {
+        "resolved": 8,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 450,
+        "ground_wait": 1140,
+        "departure_delay": 29490,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 85,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.502,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-117801",
+      "flights": 8,
+      "method": "fixed_greedy",
+      "plan_id": "c44534821702",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 240.0,
+        "ground_wait": 1350.0,
+        "departure_delay": 29490.0,
+        "crew_overtime": 0.0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 85.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.201,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 8
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-117801",
+      "flights": 8,
+      "method": "fixed",
+      "plan_id": "a05852804c5d",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 450.0,
+        "ground_wait": 1140.0,
+        "departure_delay": 29490.0,
+        "crew_overtime": 0.0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 85.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.529,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-277469",
+      "flights": 8,
+      "method": "fcfs",
+      "plan_id": "5e842f06b26a",
+      "metrics": {
+        "resolved": 8,
+        "holding": 270,
+        "holding_fuel_kg": 180,
+        "speed_absorb": 180,
+        "ground_wait": 2070,
+        "departure_delay": 22140,
+        "crew_overtime": 2250,
+        "crew_overtime_cost": 3375.0,
+        "missed_connections": 78,
+        "gate_changes": 0,
+        "holding_stack": 2
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.002,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-277469",
+      "flights": 8,
+      "method": "central",
+      "plan_id": "e18767c05dfe",
+      "metrics": {
+        "resolved": 8,
+        "holding": 270,
+        "holding_fuel_kg": 180,
+        "speed_absorb": 180,
+        "ground_wait": 2070,
+        "departure_delay": 22140,
+        "crew_overtime": 2160,
+        "crew_overtime_cost": 3240.0,
+        "missed_connections": 64,
+        "gate_changes": 2,
+        "holding_stack": 2
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 1.142,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-277469",
+      "flights": 8,
+      "method": "fixed_greedy",
+      "plan_id": "125e669cc796",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 270.0,
+        "holding_fuel_kg": 180.0,
+        "speed_absorb": 180.0,
+        "ground_wait": 2070.0,
+        "departure_delay": 22140.0,
+        "crew_overtime": 2250.0,
+        "crew_overtime_cost": 3375.0,
+        "missed_connections": 78.0,
+        "gate_changes": 0.0,
+        "holding_stack": 2.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.035,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 8
+      },
+      "concessions": {
+        "PILOT": [
+          "CONNECTIONS_MISSED"
+        ],
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-277469",
+      "flights": 8,
+      "method": "fixed",
+      "plan_id": "125e669cc796",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 270.0,
+        "holding_fuel_kg": 180.0,
+        "speed_absorb": 180.0,
+        "ground_wait": 2070.0,
+        "departure_delay": 22140.0,
+        "crew_overtime": 2250.0,
+        "crew_overtime_cost": 3375.0,
+        "missed_connections": 78.0,
+        "gate_changes": 0.0,
+        "holding_stack": 2.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 1.388,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {
+        "PILOT": [
+          "CONNECTIONS_MISSED"
+        ],
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [
+        "relaxed"
+      ],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-109889",
+      "flights": 8,
+      "method": "fcfs",
+      "plan_id": "f791a957cfb0",
+      "metrics": {
+        "resolved": 8,
+        "holding": 60,
+        "holding_fuel_kg": 40,
+        "speed_absorb": 180,
+        "ground_wait": 0,
+        "departure_delay": 33720,
+        "crew_overtime": 3270,
+        "crew_overtime_cost": 4905.0,
+        "missed_connections": 111,
+        "gate_changes": 0,
+        "holding_stack": 1
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.002,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-109889",
+      "flights": 8,
+      "method": "central",
+      "plan_id": "7ffc8f3f7710",
+      "metrics": {
+        "resolved": 8,
+        "holding": 60,
+        "holding_fuel_kg": 40,
+        "speed_absorb": 480,
+        "ground_wait": 870,
+        "departure_delay": 34890,
+        "crew_overtime": 720,
+        "crew_overtime_cost": 1080.0,
+        "missed_connections": 111,
+        "gate_changes": 0,
+        "holding_stack": 1
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.233,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-109889",
+      "flights": 8,
+      "method": "fixed_greedy",
+      "plan_id": "24e70cd2aa1e",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 60.0,
+        "holding_fuel_kg": 40.0,
+        "speed_absorb": 180.0,
+        "ground_wait": 360.0,
+        "departure_delay": 34080.0,
+        "crew_overtime": 2820.0,
+        "crew_overtime_cost": 4230.0,
+        "missed_connections": 111.0,
+        "gate_changes": 0.0,
+        "holding_stack": 1.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.031,
+      "outcome": "FALLBACK_PLAN",
+      "decision": "FALLBACK",
+      "fallback_reason": "NO_AGREEMENT_IN_MENU",
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 8
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-109889",
+      "flights": 8,
+      "method": "fixed",
+      "plan_id": "4200ddb0fc03",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 60.0,
+        "holding_fuel_kg": 40.0,
+        "speed_absorb": 480.0,
+        "ground_wait": 870.0,
+        "departure_delay": 34890.0,
+        "crew_overtime": 720.0,
+        "crew_overtime_cost": 1080.0,
+        "missed_connections": 111.0,
+        "gate_changes": 0.0,
+        "holding_stack": 1.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.315,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {
+        "GROUND": [
+          "TURNAROUND_DELAY"
+        ]
+      },
+      "mediation": [
+        "relaxed"
+      ],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-246592",
+      "flights": 6,
+      "method": "fcfs",
+      "plan_id": "9593802e3f47",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 0,
+        "departure_delay": 16140,
+        "crew_overtime": 2100,
+        "crew_overtime_cost": 3150.0,
+        "missed_connections": 53,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.002,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-246592",
+      "flights": 6,
+      "method": "central",
+      "plan_id": "cd65e6620882",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 300,
+        "ground_wait": 0,
+        "departure_delay": 16440,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 53,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.178,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-246592",
+      "flights": 6,
+      "method": "fixed_greedy",
+      "plan_id": "b47e1d327e79",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 0.0,
+        "departure_delay": 16140.0,
+        "crew_overtime": 660.0,
+        "crew_overtime_cost": 990.0,
+        "missed_connections": 53.0,
+        "gate_changes": 4.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.019,
+      "outcome": "FALLBACK_PLAN",
+      "decision": "FALLBACK",
+      "fallback_reason": "NO_AGREEMENT_IN_MENU",
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 6
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-246592",
+      "flights": 6,
+      "method": "fixed",
+      "plan_id": "cd65e6620882",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 300.0,
+        "ground_wait": 0.0,
+        "departure_delay": 16440.0,
+        "crew_overtime": 0.0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 53.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.165,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-53997",
+      "flights": 6,
+      "method": "fcfs",
+      "plan_id": "fabaa049be09",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 90,
+        "ground_wait": 240,
+        "departure_delay": 18570,
+        "crew_overtime": 2040,
+        "crew_overtime_cost": 3060.0,
+        "missed_connections": 40,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-53997",
+      "flights": 6,
+      "method": "central",
+      "plan_id": "98a8908bd8c7",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 90,
+        "ground_wait": 240,
+        "departure_delay": 18570,
+        "crew_overtime": 1350,
+        "crew_overtime_cost": 2025.0,
+        "missed_connections": 40,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.19,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-53997",
+      "flights": 6,
+      "method": "fixed_greedy",
+      "plan_id": "257913d498e7",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 90.0,
+        "ground_wait": 1260.0,
+        "departure_delay": 19590.0,
+        "crew_overtime": 1350.0,
+        "crew_overtime_cost": 2025.0,
+        "missed_connections": 40.0,
+        "gate_changes": 2.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.03,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 6
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME",
+          "GATE_CHANGES",
+          "TURNAROUND_DELAY"
+        ]
+      },
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-53997",
+      "flights": 6,
+      "method": "fixed",
+      "plan_id": "98a8908bd8c7",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 90.0,
+        "ground_wait": 240.0,
+        "departure_delay": 18570.0,
+        "crew_overtime": 1350.0,
+        "crew_overtime_cost": 2025.0,
+        "missed_connections": 40.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.243,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [
+        "relaxed"
+      ],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-292305",
+      "flights": 6,
+      "method": "fcfs",
+      "plan_id": "226168e4279c",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 30,
+        "ground_wait": 330,
+        "departure_delay": 11880,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 81,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.002,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-292305",
+      "flights": 6,
+      "method": "central",
+      "plan_id": "226168e4279c",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 30,
+        "ground_wait": 330,
+        "departure_delay": 11880,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 81,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.26,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-292305",
+      "flights": 6,
+      "method": "fixed_greedy",
+      "plan_id": "226168e4279c",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 30.0,
+        "ground_wait": 330.0,
+        "departure_delay": 11880.0,
+        "crew_overtime": 0.0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 81.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.05,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 6
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-292305",
+      "flights": 6,
+      "method": "fixed",
+      "plan_id": "226168e4279c",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 30.0,
+        "ground_wait": 330.0,
+        "departure_delay": 11880.0,
+        "crew_overtime": 0.0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 81.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.24,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-91082",
+      "flights": 4,
+      "method": "fcfs",
+      "plan_id": "87256e15c34f",
+      "metrics": {
+        "resolved": 4,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 1680,
+        "departure_delay": 12720,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 35,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-91082",
+      "flights": 4,
+      "method": "central",
+      "plan_id": "27a6a322d7f8",
+      "metrics": {
+        "resolved": 4,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 1800,
+        "departure_delay": 12840,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 25,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.09,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 4,
+        "n": 4,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-91082",
+      "flights": 4,
+      "method": "fixed_greedy",
+      "plan_id": "27a6a322d7f8",
+      "metrics": {
+        "resolved": 4.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 1800.0,
+        "departure_delay": 12840.0,
+        "crew_overtime": 0.0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 25.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.015,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 4
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-91082",
+      "flights": 4,
+      "method": "fixed",
+      "plan_id": "27a6a322d7f8",
+      "metrics": {
+        "resolved": 4.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 1800.0,
+        "departure_delay": 12840.0,
+        "crew_overtime": 0.0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 25.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.1,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 4,
+        "n": 4,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-252547",
+      "flights": 6,
+      "method": "fcfs",
+      "plan_id": "2b42d26b101a",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 90,
+        "ground_wait": 0,
+        "departure_delay": 14790,
+        "crew_overtime": 2100,
+        "crew_overtime_cost": 3150.0,
+        "missed_connections": 69,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-252547",
+      "flights": 6,
+      "method": "central",
+      "plan_id": "1a5e0a255507",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 330,
+        "ground_wait": 540,
+        "departure_delay": 15570,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 69,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.193,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-252547",
+      "flights": 6,
+      "method": "fixed_greedy",
+      "plan_id": "2b42d26b101a",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 90.0,
+        "ground_wait": 0.0,
+        "departure_delay": 14790.0,
+        "crew_overtime": 2100.0,
+        "crew_overtime_cost": 3150.0,
+        "missed_connections": 69.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.031,
+      "outcome": "FALLBACK_PLAN",
+      "decision": "FALLBACK",
+      "fallback_reason": "NO_AGREEMENT_IN_MENU",
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 6
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-252547",
+      "flights": 6,
+      "method": "fixed",
+      "plan_id": "734cd210ab3e",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 90.0,
+        "ground_wait": 780.0,
+        "departure_delay": 15570.0,
+        "crew_overtime": 0.0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 69.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.331,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {
+        "ATC": [
+          "THROUGHPUT_LOSS"
+        ]
+      },
+      "mediation": [
+        "relaxed"
+      ],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-271556",
+      "flights": 8,
+      "method": "fcfs",
+      "plan_id": "c88d40ebd08a",
+      "metrics": {
+        "resolved": 8,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 150,
+        "ground_wait": 990,
+        "departure_delay": 27180,
+        "crew_overtime": 5100,
+        "crew_overtime_cost": 7650.0,
+        "missed_connections": 62,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.004,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-271556",
+      "flights": 8,
+      "method": "central",
+      "plan_id": "4a85104cffc0",
+      "metrics": {
+        "resolved": 8,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 690,
+        "ground_wait": 2550,
+        "departure_delay": 27120,
+        "crew_overtime": 2400,
+        "crew_overtime_cost": 3600.0,
+        "missed_connections": 62,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 1.019,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-271556",
+      "flights": 8,
+      "method": "fixed_greedy",
+      "plan_id": "62183370e7be",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 150.0,
+        "ground_wait": 2310.0,
+        "departure_delay": 28500.0,
+        "crew_overtime": 2100.0,
+        "crew_overtime_cost": 3150.0,
+        "missed_connections": 62.0,
+        "gate_changes": 7.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.063,
+      "outcome": "FALLBACK_PLAN",
+      "decision": "FALLBACK",
+      "fallback_reason": "NO_AGREEMENT_IN_MENU",
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 8
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-271556",
+      "flights": 8,
+      "method": "fixed",
+      "plan_id": "4a85104cffc0",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 690.0,
+        "ground_wait": 2550.0,
+        "departure_delay": 27120.0,
+        "crew_overtime": 2400.0,
+        "crew_overtime_cost": 3600.0,
+        "missed_connections": 62.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 1.088,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {
+        "ATC": [
+          "THROUGHPUT_LOSS"
+        ],
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [
+        "relaxed"
+      ],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-350856",
+      "flights": 8,
+      "method": "fcfs",
+      "plan_id": "232405ef5ee7",
+      "metrics": {
+        "resolved": 8,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 240,
+        "departure_delay": 75720,
+        "crew_overtime": 5340,
+        "crew_overtime_cost": 8010.0,
+        "missed_connections": 99,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.008,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-350856",
+      "flights": 8,
+      "method": "central",
+      "plan_id": "232405ef5ee7",
+      "metrics": {
+        "resolved": 8,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 240,
+        "departure_delay": 75720,
+        "crew_overtime": 5340,
+        "crew_overtime_cost": 8010.0,
+        "missed_connections": 99,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 2.408,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-350856",
+      "flights": 8,
+      "method": "fixed_greedy",
+      "plan_id": "232405ef5ee7",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 240.0,
+        "departure_delay": 75720.0,
+        "crew_overtime": 5340.0,
+        "crew_overtime_cost": 8010.0,
+        "missed_connections": 99.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.193,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 8
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-350856",
+      "flights": 8,
+      "method": "fixed",
+      "plan_id": "232405ef5ee7",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 240.0,
+        "departure_delay": 75720.0,
+        "crew_overtime": 5340.0,
+        "crew_overtime_cost": 8010.0,
+        "missed_connections": 99.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 2.34,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-338142",
+      "flights": 6,
+      "method": "fcfs",
+      "plan_id": "fb714905170e",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 480,
+        "departure_delay": 19500,
+        "crew_overtime": 1620,
+        "crew_overtime_cost": 2430.0,
+        "missed_connections": 33,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-338142",
+      "flights": 6,
+      "method": "central",
+      "plan_id": "1f251389494f",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 480,
+        "departure_delay": 19500,
+        "crew_overtime": 1620,
+        "crew_overtime_cost": 2430.0,
+        "missed_connections": 33,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.255,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-338142",
+      "flights": 6,
+      "method": "fixed_greedy",
+      "plan_id": "1f251389494f",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 480.0,
+        "departure_delay": 19500.0,
+        "crew_overtime": 1620.0,
+        "crew_overtime_cost": 2430.0,
+        "missed_connections": 33.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.044,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 6
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-338142",
+      "flights": 6,
+      "method": "fixed",
+      "plan_id": "1f251389494f",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 480.0,
+        "departure_delay": 19500.0,
+        "crew_overtime": 1620.0,
+        "crew_overtime_cost": 2430.0,
+        "missed_connections": 33.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.197,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-35532",
+      "flights": 5,
+      "method": "fcfs",
+      "plan_id": "6814ca672342",
+      "metrics": {
+        "resolved": 5,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 1680,
+        "departure_delay": 19440,
+        "crew_overtime": 240,
+        "crew_overtime_cost": 360.0,
+        "missed_connections": 64,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-35532",
+      "flights": 5,
+      "method": "central",
+      "plan_id": "0ea9d00939c2",
+      "metrics": {
+        "resolved": 5,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 1680,
+        "departure_delay": 19440,
+        "crew_overtime": 240,
+        "crew_overtime_cost": 360.0,
+        "missed_connections": 64,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.143,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 5,
+        "n": 5,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-35532",
+      "flights": 5,
+      "method": "fixed_greedy",
+      "plan_id": "6814ca672342",
+      "metrics": {
+        "resolved": 5.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 1680.0,
+        "departure_delay": 19440.0,
+        "crew_overtime": 240.0,
+        "crew_overtime_cost": 360.0,
+        "missed_connections": 64.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.025,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 5
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-35532",
+      "flights": 5,
+      "method": "fixed",
+      "plan_id": "0ea9d00939c2",
+      "metrics": {
+        "resolved": 5.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 1680.0,
+        "departure_delay": 19440.0,
+        "crew_overtime": 240.0,
+        "crew_overtime_cost": 360.0,
+        "missed_connections": 64.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.164,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 5,
+        "n": 5,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-339091",
+      "flights": 8,
+      "method": "fcfs",
+      "plan_id": "e9e08f3037de",
+      "metrics": {
+        "resolved": 8,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 0,
+        "departure_delay": 29880,
+        "crew_overtime": 1740,
+        "crew_overtime_cost": 2610.0,
+        "missed_connections": 47,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.002,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-339091",
+      "flights": 8,
+      "method": "central",
+      "plan_id": "70d06e510783",
+      "metrics": {
+        "resolved": 8,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 0,
+        "departure_delay": 29880,
+        "crew_overtime": 1380,
+        "crew_overtime_cost": 2070.0,
+        "missed_connections": 47,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.347,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-339091",
+      "flights": 8,
+      "method": "fixed_greedy",
+      "plan_id": "3188b91a4089",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 0.0,
+        "departure_delay": 29880.0,
+        "crew_overtime": 1740.0,
+        "crew_overtime_cost": 2610.0,
+        "missed_connections": 47.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.049,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 8
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-339091",
+      "flights": 8,
+      "method": "fixed",
+      "plan_id": "3188b91a4089",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 0.0,
+        "departure_delay": 29880.0,
+        "crew_overtime": 1740.0,
+        "crew_overtime_cost": 2610.0,
+        "missed_connections": 47.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.384,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [
+        "relaxed"
+      ],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-91708",
+      "flights": 7,
+      "method": "fcfs",
+      "plan_id": "524d3e614af0",
+      "metrics": {
+        "resolved": 7,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 120,
+        "ground_wait": 1710,
+        "departure_delay": 37350,
+        "crew_overtime": 900,
+        "crew_overtime_cost": 1350.0,
+        "missed_connections": 54,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-91708",
+      "flights": 7,
+      "method": "central",
+      "plan_id": "59bd2e542b6b",
+      "metrics": {
+        "resolved": 7,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 450,
+        "ground_wait": 1440,
+        "departure_delay": 37350,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 54,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.289,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 7,
+        "n": 7,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-91708",
+      "flights": 7,
+      "method": "fixed_greedy",
+      "plan_id": "524d3e614af0",
+      "metrics": {
+        "resolved": 7.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 120.0,
+        "ground_wait": 1710.0,
+        "departure_delay": 37350.0,
+        "crew_overtime": 900.0,
+        "crew_overtime_cost": 1350.0,
+        "missed_connections": 54.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.104,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 7
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-91708",
+      "flights": 7,
+      "method": "fixed",
+      "plan_id": "59bd2e542b6b",
+      "metrics": {
+        "resolved": 7.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 450.0,
+        "ground_wait": 1440.0,
+        "departure_delay": 37350.0,
+        "crew_overtime": 0.0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 54.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.365,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 7,
+        "n": 7,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-238811",
+      "flights": 5,
+      "method": "fcfs",
+      "plan_id": "7e202f200675",
+      "metrics": {
+        "resolved": 5,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 1020,
+        "departure_delay": 13020,
+        "crew_overtime": 6720,
+        "crew_overtime_cost": 10080.0,
+        "missed_connections": 33,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-238811",
+      "flights": 5,
+      "method": "central",
+      "plan_id": "16bd03754e19",
+      "metrics": {
+        "resolved": 5,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 930,
+        "ground_wait": 90,
+        "departure_delay": 13020,
+        "crew_overtime": 6720,
+        "crew_overtime_cost": 10080.0,
+        "missed_connections": 33,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.138,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 5,
+        "n": 5,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-238811",
+      "flights": 5,
+      "method": "fixed_greedy",
+      "plan_id": "7e202f200675",
+      "metrics": {
+        "resolved": 5.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 1020.0,
+        "departure_delay": 13020.0,
+        "crew_overtime": 6720.0,
+        "crew_overtime_cost": 10080.0,
+        "missed_connections": 33.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.048,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 5
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-238811",
+      "flights": 5,
+      "method": "fixed",
+      "plan_id": "16bd03754e19",
+      "metrics": {
+        "resolved": 5.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 930.0,
+        "ground_wait": 90.0,
+        "departure_delay": 13020.0,
+        "crew_overtime": 6720.0,
+        "crew_overtime_cost": 10080.0,
+        "missed_connections": 33.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.162,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 5,
+        "n": 5,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-273443",
+      "flights": 8,
+      "method": "fcfs",
+      "plan_id": "5b3cf503c0cb",
+      "metrics": {
+        "resolved": 8,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 240,
+        "ground_wait": 210,
+        "departure_delay": 27210,
+        "crew_overtime": 540,
+        "crew_overtime_cost": 810.0,
+        "missed_connections": 89,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-273443",
+      "flights": 8,
+      "method": "central",
+      "plan_id": "e0e6f476773e",
+      "metrics": {
+        "resolved": 8,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 390,
+        "ground_wait": 60,
+        "departure_delay": 27210,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 89,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.305,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-273443",
+      "flights": 8,
+      "method": "fixed_greedy",
+      "plan_id": "5b3cf503c0cb",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 240.0,
+        "ground_wait": 210.0,
+        "departure_delay": 27210.0,
+        "crew_overtime": 540.0,
+        "crew_overtime_cost": 810.0,
+        "missed_connections": 89.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.086,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 8
+      },
+      "concessions": {
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-273443",
+      "flights": 8,
+      "method": "fixed",
+      "plan_id": "e0e6f476773e",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 390.0,
+        "ground_wait": 60.0,
+        "departure_delay": 27210.0,
+        "crew_overtime": 0.0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 89.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.354,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-66889",
+      "flights": 8,
+      "method": "fcfs",
+      "plan_id": "08810cfbdafb",
+      "metrics": {
+        "resolved": 8,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 2100,
+        "departure_delay": 30360,
+        "crew_overtime": 120,
+        "crew_overtime_cost": 180.0,
+        "missed_connections": 73,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.002,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-66889",
+      "flights": 8,
+      "method": "central",
+      "plan_id": "79f080fc7a71",
+      "metrics": {
+        "resolved": 8,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 600,
+        "ground_wait": 1500,
+        "departure_delay": 30360,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 73,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.438,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-66889",
+      "flights": 8,
+      "method": "fixed_greedy",
+      "plan_id": "08810cfbdafb",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 2100.0,
+        "departure_delay": 30360.0,
+        "crew_overtime": 120.0,
+        "crew_overtime_cost": 180.0,
+        "missed_connections": 73.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.128,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 8
+      },
+      "concessions": {
+        "PILOT": [
+          "CONNECTIONS_MISSED"
+        ],
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-66889",
+      "flights": 8,
+      "method": "fixed",
+      "plan_id": "08810cfbdafb",
+      "metrics": {
+        "resolved": 8.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 2100.0,
+        "departure_delay": 30360.0,
+        "crew_overtime": 120.0,
+        "crew_overtime_cost": 180.0,
+        "missed_connections": 73.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.613,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 8,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {
+        "PILOT": [
+          "CONNECTIONS_MISSED"
+        ],
+        "GROUND": [
+          "CREW_OVERTIME"
+        ]
+      },
+      "mediation": [
+        "relaxed"
+      ],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-3125",
+      "flights": 8,
+      "method": "fcfs",
+      "plan_id": "f57f6d453bc8",
+      "metrics": {
+        "resolved": 5,
+        "holding": 4260,
+        "holding_fuel_kg": 2840,
+        "speed_absorb": 330,
+        "ground_wait": 0,
+        "departure_delay": 19110,
+        "crew_overtime": 1320,
+        "crew_overtime_cost": 1980.0,
+        "missed_connections": 29,
+        "gate_changes": 0,
+        "holding_stack": 2
+      },
+      "unresolved": [
+        "DL2549",
+        "DL2637",
+        "DL1770"
+      ],
+      "violations": 0,
+      "runtime_seconds": 0.002,
+      "outcome": "INCOMPLETE"
+    },
+    {
+      "scenario": "dot-3125",
+      "flights": 8,
+      "method": "central",
+      "plan_id": "e1040a6296f3",
+      "metrics": {
+        "resolved": 5,
+        "holding": 4260,
+        "holding_fuel_kg": 2840,
+        "speed_absorb": 330,
+        "ground_wait": 0,
+        "departure_delay": 19110,
+        "crew_overtime": 780,
+        "crew_overtime_cost": 1170.0,
+        "missed_connections": 29,
+        "gate_changes": 0,
+        "holding_stack": 2
+      },
+      "unresolved": [
+        "DL2549",
+        "DL2637",
+        "DL1770"
+      ],
+      "violations": 0,
+      "runtime_seconds": 0.149,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 5,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-3125",
+      "flights": 8,
+      "method": "fixed_greedy",
+      "plan_id": "8cd452a37c3d",
+      "metrics": {
+        "resolved": 5.0,
+        "holding": 4260.0,
+        "holding_fuel_kg": 2840.0,
+        "speed_absorb": 330.0,
+        "ground_wait": 0.0,
+        "departure_delay": 19110.0,
+        "crew_overtime": 780.0,
+        "crew_overtime_cost": 1170.0,
+        "missed_connections": 29.0,
+        "gate_changes": 3.0,
+        "holding_stack": 2.0
+      },
+      "unresolved": [
+        "DL2637",
+        "DL1770",
+        "DL2549"
+      ],
+      "violations": 0,
+      "runtime_seconds": 0.02,
+      "outcome": "NO_PLAN_FOUND",
+      "decision": "FALLBACK",
+      "fallback_reason": "NO_AGREEMENT_IN_MENU",
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 8
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-3125",
+      "flights": 8,
+      "method": "fixed",
+      "plan_id": "e1040a6296f3",
+      "metrics": {
+        "resolved": 5.0,
+        "holding": 4260.0,
+        "holding_fuel_kg": 2840.0,
+        "speed_absorb": 330.0,
+        "ground_wait": 0.0,
+        "departure_delay": 19110.0,
+        "crew_overtime": 780.0,
+        "crew_overtime_cost": 1170.0,
+        "missed_connections": 29.0,
+        "gate_changes": 0.0,
+        "holding_stack": 2.0
+      },
+      "unresolved": [
+        "DL2549",
+        "DL2637",
+        "DL1770"
+      ],
+      "violations": 0,
+      "runtime_seconds": 0.194,
+      "outcome": "PROVEN_INFEASIBLE",
+      "decision": "FALLBACK",
+      "fallback_reason": "NO_AGREEMENT_IN_MENU",
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 5,
+        "n": 8,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-24760",
+      "flights": 4,
+      "method": "fcfs",
+      "plan_id": "30889818a875",
+      "metrics": {
+        "resolved": 4,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 30,
+        "ground_wait": 210,
+        "departure_delay": 9060,
+        "crew_overtime": 3360,
+        "crew_overtime_cost": 5040.0,
+        "missed_connections": 25,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-24760",
+      "flights": 4,
+      "method": "central",
+      "plan_id": "30889818a875",
+      "metrics": {
+        "resolved": 4,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 30,
+        "ground_wait": 210,
+        "departure_delay": 9060,
+        "crew_overtime": 3360,
+        "crew_overtime_cost": 5040.0,
+        "missed_connections": 25,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.13,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 4,
+        "n": 4,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-24760",
+      "flights": 4,
+      "method": "fixed_greedy",
+      "plan_id": "30889818a875",
+      "metrics": {
+        "resolved": 4.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 30.0,
+        "ground_wait": 210.0,
+        "departure_delay": 9060.0,
+        "crew_overtime": 3360.0,
+        "crew_overtime_cost": 5040.0,
+        "missed_connections": 25.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.053,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 4
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-24760",
+      "flights": 4,
+      "method": "fixed",
+      "plan_id": "30889818a875",
+      "metrics": {
+        "resolved": 4.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 30.0,
+        "ground_wait": 210.0,
+        "departure_delay": 9060.0,
+        "crew_overtime": 3360.0,
+        "crew_overtime_cost": 5040.0,
+        "missed_connections": 25.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.136,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 4,
+        "n": 4,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-111996",
+      "flights": 6,
+      "method": "fcfs",
+      "plan_id": "d6e1df9f9c5a",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 0,
+        "ground_wait": 480,
+        "departure_delay": 21060,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 59,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.001,
+      "outcome": "PLAN"
+    },
+    {
+      "scenario": "dot-111996",
+      "flights": 6,
+      "method": "central",
+      "plan_id": "cc5870911037",
+      "metrics": {
+        "resolved": 6,
+        "holding": 0,
+        "holding_fuel_kg": 0,
+        "speed_absorb": 120,
+        "ground_wait": 360,
+        "departure_delay": 21060,
+        "crew_overtime": 0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 59,
+        "gate_changes": 0,
+        "holding_stack": 0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.206,
+      "outcome": "PLAN",
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      }
+    },
+    {
+      "scenario": "dot-111996",
+      "flights": 6,
+      "method": "fixed_greedy",
+      "plan_id": "d6e1df9f9c5a",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 0.0,
+        "ground_wait": 480.0,
+        "departure_delay": 21060.0,
+        "crew_overtime": 0.0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 59.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.105,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "NOT_RUN",
+        "proven": false,
+        "max_resolved": null,
+        "n": 6
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    },
+    {
+      "scenario": "dot-111996",
+      "flights": 6,
+      "method": "fixed",
+      "plan_id": "cc5870911037",
+      "metrics": {
+        "resolved": 6.0,
+        "holding": 0.0,
+        "holding_fuel_kg": 0.0,
+        "speed_absorb": 120.0,
+        "ground_wait": 360.0,
+        "departure_delay": 21060.0,
+        "crew_overtime": 0.0,
+        "crew_overtime_cost": 0.0,
+        "missed_connections": 59.0,
+        "gate_changes": 0.0,
+        "holding_stack": 0.0
+      },
+      "unresolved": [],
+      "violations": 0,
+      "runtime_seconds": 0.214,
+      "outcome": "CONSENSUS",
+      "decision": "CONSENSUS",
+      "fallback_reason": null,
+      "error_type": null,
+      "proof": {
+        "status": "OPTIMAL",
+        "proven": true,
+        "max_resolved": 6,
+        "n": 6,
+        "model": "30s grid; constraints identical to engine.validate(); synthetic rules",
+        "solver_plans_rejected_by_validator": 0
+      },
+      "concessions": {},
+      "mediation": [],
+      "model_calls": 0
+    }
+  ],
+  "metric_units": {
+    "holding": "seconds",
+    "speed_absorb": "seconds",
+    "ground_wait": "seconds",
+    "departure_delay": "seconds",
+    "crew_overtime": "seconds",
+    "missed_connections": "synthetic passenger count"
+  }
+}

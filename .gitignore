@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.sqlite3*
+.env
+firmware/node/config.h
+benchmark-results.json
+
+# Local datasets, credentials and runtime files
+flights.csv
+.env.*
+!.env.example
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*

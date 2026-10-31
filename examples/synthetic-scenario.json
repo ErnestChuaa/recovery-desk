@@ -1,0 +1,246 @@
+{
+  "id": "demo-0",
+  "version": 1,
+  "horizon": 14400,
+  "separation": 60,
+  "wake_arrival_s": {
+    "SUPER": {
+      "SUPER": 78,
+      "HEAVY": 155,
+      "LARGE": 180,
+      "SMALL": 206
+    },
+    "HEAVY": {
+      "SUPER": 78,
+      "HEAVY": 103,
+      "LARGE": 129,
+      "SMALL": 155
+    },
+    "LARGE": {
+      "SUPER": 78,
+      "HEAVY": 78,
+      "LARGE": 78,
+      "SMALL": 103
+    },
+    "SMALL": {
+      "SUPER": 78,
+      "HEAVY": 78,
+      "LARGE": 78,
+      "SMALL": 78
+    }
+  },
+  "wake_departure_s": {
+    "SUPER": {
+      "SUPER": 60,
+      "HEAVY": 180,
+      "LARGE": 180,
+      "SMALL": 180
+    },
+    "HEAVY": {
+      "SUPER": 60,
+      "HEAVY": 120,
+      "LARGE": 120,
+      "SMALL": 120
+    },
+    "LARGE": {
+      "SUPER": 60,
+      "HEAVY": 60,
+      "LARGE": 60,
+      "SMALL": 60
+    },
+    "SMALL": {
+      "SUPER": 60,
+      "HEAVY": 60,
+      "LARGE": 60,
+      "SMALL": 60
+    }
+  },
+  "active_runways": 3,
+  "max_ops_per_hour": 60,
+  "crew_count": 2,
+  "crew_shift_end": [
+    3600,
+    7200
+  ],
+  "hold_pad_capacity": 2,
+  "max_ground_wait": 2400,
+  "decision_time": 0,
+  "gate_change_notice": 1200,
+  "flights": [
+    {
+      "id": "F1",
+      "ready": 600,
+      "latest": 3300,
+      "scheduled_departure": 4200,
+      "turnaround": 2100,
+      "taxi": 300,
+      "taxi_out": null,
+      "wake": "LARGE",
+      "contingency": 405,
+      "duty_end": null,
+      "enroute_absorb": 0,
+      "gates": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "preferred_gate": "G1",
+      "connections": 10,
+      "connection_deadline": 3000,
+      "emergency": false,
+      "motion_event": false,
+      "note": "Prefer contact gate G1 for assisted transfers."
+    },
+    {
+      "id": "F2",
+      "ready": 1020,
+      "latest": 3720,
+      "scheduled_departure": 4920,
+      "turnaround": 2100,
+      "taxi": 300,
+      "taxi_out": null,
+      "wake": "HEAVY",
+      "contingency": 405,
+      "duty_end": null,
+      "enroute_absorb": 0,
+      "gates": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "preferred_gate": "G2",
+      "connections": 13,
+      "connection_deadline": 3420,
+      "emergency": false,
+      "motion_event": false,
+      "note": ""
+    },
+    {
+      "id": "F3",
+      "ready": 1440,
+      "latest": 4140,
+      "scheduled_departure": 5640,
+      "turnaround": 2100,
+      "taxi": 300,
+      "taxi_out": null,
+      "wake": "LARGE",
+      "contingency": 270,
+      "duty_end": null,
+      "enroute_absorb": 300,
+      "gates": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "preferred_gate": "G3",
+      "connections": 16,
+      "connection_deadline": 3840,
+      "emergency": false,
+      "motion_event": false,
+      "note": ""
+    },
+    {
+      "id": "F4",
+      "ready": 1860,
+      "latest": 4560,
+      "scheduled_departure": 6360,
+      "turnaround": 2100,
+      "taxi": 300,
+      "taxi_out": null,
+      "wake": "LARGE",
+      "contingency": 360,
+      "duty_end": null,
+      "enroute_absorb": 300,
+      "gates": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "preferred_gate": "G1",
+      "connections": 19,
+      "connection_deadline": 4260,
+      "emergency": false,
+      "motion_event": false,
+      "note": ""
+    },
+    {
+      "id": "F5",
+      "ready": 2280,
+      "latest": 4980,
+      "scheduled_departure": 7080,
+      "turnaround": 2100,
+      "taxi": 300,
+      "taxi_out": null,
+      "wake": "HEAVY",
+      "contingency": 405,
+      "duty_end": null,
+      "enroute_absorb": 300,
+      "gates": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "preferred_gate": "G2",
+      "connections": 22,
+      "connection_deadline": 4680,
+      "emergency": false,
+      "motion_event": false,
+      "note": ""
+    },
+    {
+      "id": "F6",
+      "ready": 2700,
+      "latest": 5400,
+      "scheduled_departure": 7800,
+      "turnaround": 2100,
+      "taxi": 300,
+      "taxi_out": null,
+      "wake": "LARGE",
+      "contingency": 405,
+      "duty_end": null,
+      "enroute_absorb": 300,
+      "gates": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "preferred_gate": "G3",
+      "connections": 25,
+      "connection_deadline": 5100,
+      "emergency": false,
+      "motion_event": false,
+      "note": ""
+    }
+  ],
+  "gates": {
+    "G1": [],
+    "G2": [],
+    "G3": []
+  },
+  "runway_closed": [
+    {
+      "start": 0,
+      "end": 1500
+    }
+  ],
+  "background": [],
+  "runway_reserved": [],
+  "taxi_closed": [],
+  "focal_id": "F1",
+  "provenance": {
+    "kind": "synthetic",
+    "seed": 0,
+    "time_unit": "seconds from scenario start",
+    "rules": "Limits from the organisers' workbook (Medium hub class); flight times, crews and connections are synthetic",
+    "constraints": {
+      "airport_class": "Medium hub",
+      "active_runways": 3,
+      "gates": 70,
+      "max_runway_ops_per_hour": 60,
+      "min_turnaround_min": 35,
+      "spare_gates_at_any_time": 3,
+      "source": "challenge2_operational_constraints.xlsx"
+    },
+    "scope": "Arrival and departure streams, 3 spare gates, 2 ground crews on 8-hour shifts, 2 ground-hold positions"
+  }
+}
